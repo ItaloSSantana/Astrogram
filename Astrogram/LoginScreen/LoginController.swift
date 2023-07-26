@@ -106,7 +106,7 @@ class LoginController: ViewController<LoginInteracting, UIView> {
         glassView.snp.makeConstraints {
             $0.top.equalTo(logoImage.snp.bottom).offset(Space.base10.rawValue)
             $0.leading.trailing.equalToSuperview().inset(Space.base06.rawValue)
-            $0.bottom.equalToSuperview().offset(-Space.base30.rawValue)
+           // $0.bottom.equalToSuperview().offset(-Space.base30.rawValue)
         }
         
         emailTextField.snp.makeConstraints {
@@ -133,6 +133,7 @@ class LoginController: ViewController<LoginInteracting, UIView> {
         googleButton.snp.makeConstraints {
             $0.top.equalTo(registerButton.snp.bottom).offset(Space.base04.rawValue)
             $0.leading.trailing.equalTo(glassView).inset(Space.base05.rawValue)
+            $0.bottom.equalTo(glassView).offset(-Space.base03.rawValue)
             $0.height.equalTo(60)
         }
         
