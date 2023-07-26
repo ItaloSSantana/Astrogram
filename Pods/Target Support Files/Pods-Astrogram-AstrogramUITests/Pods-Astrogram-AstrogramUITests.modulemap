@@ -1,0 +1,6 @@
+framework module Pods_Astrogram_AstrogramUITests {
+  umbrella header "Pods-Astrogram-AstrogramUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
