@@ -7,6 +7,7 @@ protocol LoginDisplaying: AnyObject {
 }
 
 class LoginController: ViewController<LoginInteracting, UIView> {
+    
     private lazy var backgroundImage: UIImageView = {
       let image = UIImageView()
         image.image = UIImage(named: Constants.Images.backgroundLogin)
@@ -41,6 +42,7 @@ class LoginController: ViewController<LoginInteracting, UIView> {
         button.setTitle("Entrar", for: .normal)
         button.titleLabel?.tintColor = .white
         button.titleLabel?.font = .systemFont(ofSize: 20)
+        button.addTarget(self, action: #selector(logoutPressed), for: .touchUpInside)
         return button
     }()
     
@@ -60,16 +62,7 @@ class LoginController: ViewController<LoginInteracting, UIView> {
         }
         return button
     }()
-    
-//    private lazy var facebookButton: CustomButtonView = {
-//        let button = CustomButtonView(title: "Entre usando Facebook", image: Constants.Images.googleLogo, radius: 20)
-//        button.backgroundColor = .white
-//        button.action = {
-//            //self.signInGoogle()
-//        }
-//        return button
-//    }()
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
@@ -78,6 +71,8 @@ class LoginController: ViewController<LoginInteracting, UIView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .blue
+        interactor.updateScreen()
+     
     }
     
     override func buildViewHierarchy() {
@@ -98,13 +93,13 @@ class LoginController: ViewController<LoginInteracting, UIView> {
         }
         
         logoImage.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(Space.base11.rawValue)
+            $0.top.equalToSuperview().offset(Space.base14.rawValue)
             $0.centerX.equalToSuperview()
             $0.width.height.equalTo(242)
         }
         
         glassView.snp.makeConstraints {
-            $0.top.equalTo(logoImage.snp.bottom).offset(Space.base10.rawValue)
+            $0.top.equalTo(logoImage.snp.bottom).offset(Space.base11.rawValue)
             $0.leading.trailing.equalToSuperview().inset(Space.base06.rawValue)
            // $0.bottom.equalToSuperview().offset(-Space.base30.rawValue)
         }
@@ -143,7 +138,7 @@ class LoginController: ViewController<LoginInteracting, UIView> {
 //            $0.height.equalTo(60)
 //        }
     }
-    
+
     @objc private func signInGoogle() {
         interactor.googlePressed()
     }
@@ -151,10 +146,14 @@ class LoginController: ViewController<LoginInteracting, UIView> {
     @objc private func registerPressed() {
         interactor.registerPressed()
     }
+    
+    @objc private func logoutPressed() {
+        interactor.logoutPressed()
+    }
 }
 
 extension LoginController: LoginDisplaying {
     func doSomething() {
-        //
+    //
     }
 }

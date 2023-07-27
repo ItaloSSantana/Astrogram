@@ -1,4 +1,5 @@
 import Foundation
+import FirebaseFirestore
 import FirebaseCore
 import FirebaseAuth
 import GoogleSignIn
@@ -47,13 +48,27 @@ class AuthenticationViewModel: ObservableObject {
     
     let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: authentication.accessToken)
     
+    let auth = Auth.auth()
     // 3
-    Auth.auth().signIn(with: credential) { [unowned self] (_, error) in
-      if let error = error {
-        print(error.localizedDescription)
-      } else {
-        state = .signedIn
-      }
+    auth.signIn(with: credential) { [unowned self] (_, error) in
+        if let error = error {
+            print(error.localizedDescription)
+        } else {
+            state = .signedIn
+            let db = Firestore.firestore()
+            guard let uid = auth.currentUser?.uid else {return}
+            db.collection("users")
+                .document(uid)
+                .getDocument { (result, error) in
+                    if let safeResult = result, safeResult.exists {
+                        print("user already exists")
+                    } else {
+                        db.collection("users")
+                            .document(uid)
+                            .setData(["name": user?.profile?.name, "email": user?.profile?.email])
+                    }
+                }
+        }
     }
   }
   

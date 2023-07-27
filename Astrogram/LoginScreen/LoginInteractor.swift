@@ -4,9 +4,10 @@ import FirebaseCore
 import GoogleSignIn
 
 protocol LoginInteracting: AnyObject {
-    func loadData()
+    func updateScreen()
     func googlePressed()
     func registerPressed()
+    func logoutPressed()
 }
 
 final class LoginInteractor: LoginInteracting {
@@ -17,8 +18,8 @@ final class LoginInteractor: LoginInteracting {
         self.presenter = presenter
     }
     
-    func loadData() {
-        //
+    func updateScreen() {
+        presenter.updateScreen()
     }
     func googlePressed() {
         authViewModel.signIn()
@@ -26,5 +27,9 @@ final class LoginInteractor: LoginInteracting {
     
     func registerPressed() {
         presenter.registerPressed()
+    }
+    
+    func logoutPressed() {
+        authViewModel.signOut()
     }
 }
