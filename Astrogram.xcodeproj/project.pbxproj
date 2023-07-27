@@ -28,6 +28,31 @@
 		0F5658402A703FAB00EA8AF9 /* RegisterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F56583F2A703FAB00EA8AF9 /* RegisterCoordinator.swift */; };
 		0F5658452A703FB600EA8AF9 /* RegisterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5658442A703FB600EA8AF9 /* RegisterFactory.swift */; };
 		0F82D7992A6F2F8100E2C364 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F82D7982A6F2F8100E2C364 /* CustomButtonView.swift */; };
+		0FDCC3082A72C59F00B67287 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCC3072A72C59F00B67287 /* HomeController.swift */; };
+		0FDCC3102A72C5A900B67287 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCC30F2A72C5A900B67287 /* HomeInteractor.swift */; };
+		0FDCC3122A72C5B200B67287 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCC3112A72C5B200B67287 /* HomePresenter.swift */; };
+		0FDCC3172A72C5C100B67287 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCC3162A72C5C100B67287 /* HomeCoordinator.swift */; };
+		0FDCC31C2A72C5CB00B67287 /* HomeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCC31B2A72C5CB00B67287 /* HomeFactory.swift */; };
+		0FDCC3262A72DE7D00B67287 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCC3212A72DE7D00B67287 /* ProfileInteractor.swift */; };
+		0FDCC3272A72DE7D00B67287 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCC3222A72DE7D00B67287 /* ProfilePresenter.swift */; };
+		0FDCC3282A72DE7D00B67287 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCC3232A72DE7D00B67287 /* ProfileCoordinator.swift */; };
+		0FDCC3292A72DE7D00B67287 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCC3242A72DE7D00B67287 /* ProfileController.swift */; };
+		0FDCC32A2A72DE7D00B67287 /* ProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCC3252A72DE7D00B67287 /* ProfileFactory.swift */; };
+		0FDCC3492A72E0B000B67287 /* AddPostInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCC3442A72E0B000B67287 /* AddPostInteractor.swift */; };
+		0FDCC34A2A72E0B000B67287 /* AddPostCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCC3452A72E0B000B67287 /* AddPostCoordinator.swift */; };
+		0FDCC34B2A72E0B000B67287 /* AddPostFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCC3462A72E0B000B67287 /* AddPostFactory.swift */; };
+		0FDCC34C2A72E0B000B67287 /* AddPostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCC3472A72E0B000B67287 /* AddPostController.swift */; };
+		0FDCC34D2A72E0B000B67287 /* AddPostPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCC3482A72E0B000B67287 /* AddPostPresenter.swift */; };
+		0FDCC3632A72E41300B67287 /* MessagesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCC35E2A72E41300B67287 /* MessagesInteractor.swift */; };
+		0FDCC3642A72E41300B67287 /* MessagesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCC35F2A72E41300B67287 /* MessagesPresenter.swift */; };
+		0FDCC3652A72E41300B67287 /* MessagesFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCC3602A72E41300B67287 /* MessagesFactory.swift */; };
+		0FDCC3662A72E41300B67287 /* MessagesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCC3612A72E41300B67287 /* MessagesCoordinator.swift */; };
+		0FDCC3672A72E41300B67287 /* MessagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCC3622A72E41300B67287 /* MessagesController.swift */; };
+		0FDCC3742A72E5E200B67287 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCC36F2A72E5E100B67287 /* SettingsController.swift */; };
+		0FDCC3752A72E5E200B67287 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCC3702A72E5E100B67287 /* SettingsInteractor.swift */; };
+		0FDCC3762A72E5E200B67287 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCC3712A72E5E100B67287 /* SettingsCoordinator.swift */; };
+		0FDCC3772A72E5E200B67287 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCC3722A72E5E100B67287 /* SettingsPresenter.swift */; };
+		0FDCC3782A72E5E200B67287 /* SettingsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCC3732A72E5E200B67287 /* SettingsFactory.swift */; };
 		0FF9CF932A6EC60E00B3A7DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0FF9CF922A6EC60E00B3A7DF /* GoogleService-Info.plist */; };
 		0FF9CFBE2A6EC96E00B3A7DF /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF9CFBD2A6EC96E00B3A7DF /* LoginController.swift */; };
 		0FF9CFCA2A6EC9E500B3A7DF /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF9CFC92A6EC9E500B3A7DF /* LoginInteractor.swift */; };
@@ -85,6 +110,31 @@
 		0F56583F2A703FAB00EA8AF9 /* RegisterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCoordinator.swift; sourceTree = "<group>"; };
 		0F5658442A703FB600EA8AF9 /* RegisterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterFactory.swift; sourceTree = "<group>"; };
 		0F82D7982A6F2F8100E2C364 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
+		0FDCC3072A72C59F00B67287 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		0FDCC30F2A72C5A900B67287 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
+		0FDCC3112A72C5B200B67287 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		0FDCC3162A72C5C100B67287 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		0FDCC31B2A72C5CB00B67287 /* HomeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFactory.swift; sourceTree = "<group>"; };
+		0FDCC3212A72DE7D00B67287 /* ProfileInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
+		0FDCC3222A72DE7D00B67287 /* ProfilePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
+		0FDCC3232A72DE7D00B67287 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		0FDCC3242A72DE7D00B67287 /* ProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		0FDCC3252A72DE7D00B67287 /* ProfileFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileFactory.swift; sourceTree = "<group>"; };
+		0FDCC3442A72E0B000B67287 /* AddPostInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPostInteractor.swift; sourceTree = "<group>"; };
+		0FDCC3452A72E0B000B67287 /* AddPostCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPostCoordinator.swift; sourceTree = "<group>"; };
+		0FDCC3462A72E0B000B67287 /* AddPostFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPostFactory.swift; sourceTree = "<group>"; };
+		0FDCC3472A72E0B000B67287 /* AddPostController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPostController.swift; sourceTree = "<group>"; };
+		0FDCC3482A72E0B000B67287 /* AddPostPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPostPresenter.swift; sourceTree = "<group>"; };
+		0FDCC35E2A72E41300B67287 /* MessagesInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesInteractor.swift; sourceTree = "<group>"; };
+		0FDCC35F2A72E41300B67287 /* MessagesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesPresenter.swift; sourceTree = "<group>"; };
+		0FDCC3602A72E41300B67287 /* MessagesFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesFactory.swift; sourceTree = "<group>"; };
+		0FDCC3612A72E41300B67287 /* MessagesCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesCoordinator.swift; sourceTree = "<group>"; };
+		0FDCC3622A72E41300B67287 /* MessagesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesController.swift; sourceTree = "<group>"; };
+		0FDCC36F2A72E5E100B67287 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		0FDCC3702A72E5E100B67287 /* SettingsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
+		0FDCC3712A72E5E100B67287 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		0FDCC3722A72E5E100B67287 /* SettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		0FDCC3732A72E5E200B67287 /* SettingsFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsFactory.swift; sourceTree = "<group>"; };
 		0FF9CF922A6EC60E00B3A7DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0FF9CFBD2A6EC96E00B3A7DF /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		0FF9CFC92A6EC9E500B3A7DF /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
@@ -135,7 +185,6 @@
 			isa = PBXGroup;
 			children = (
 				0F11B5302A6EBAF90031596D /* Astrogram */,
-				0F56582E2A703F7700EA8AF9 /* RegisterScreen */,
 				0F11B54A2A6EBB420031596D /* AstrogramTests */,
 				0F11B5552A6EBB420031596D /* AstrogramUITests */,
 				0F11B52F2A6EBAF90031596D /* Products */,
@@ -157,7 +206,6 @@
 		0F11B5302A6EBAF90031596D /* Astrogram */ = {
 			isa = PBXGroup;
 			children = (
-				0F56582D2A703F7100EA8AF9 /* RegisterScreen */,
 				0F11B5312A6EBAFA0031596D /* AppDelegate.swift */,
 				0F11B5332A6EBAFA0031596D /* SceneDelegate.swift */,
 				0F18E2A12A6EE85C00CE2AF2 /* Common */,
@@ -170,6 +218,7 @@
 				0F18E2C72A6F10F900CE2AF2 /* AuthenticationViewModel.swift */,
 				0FF9CFC22A6EC97300B3A7DF /* LoginScreen */,
 				0F56582F2A703F7E00EA8AF9 /* RegisterScreen */,
+				0FDCC37C2A72E7A300B67287 /* AppTabBar */,
 			);
 			path = Astrogram;
 			sourceTree = "<group>";
@@ -207,18 +256,16 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		0F56582D2A703F7100EA8AF9 /* RegisterScreen */ = {
+		0F56582E2A703F7700EA8AF9 /* HomeScreen */ = {
 			isa = PBXGroup;
 			children = (
+				0FDCC3072A72C59F00B67287 /* HomeController.swift */,
+				0FDCC30F2A72C5A900B67287 /* HomeInteractor.swift */,
+				0FDCC3112A72C5B200B67287 /* HomePresenter.swift */,
+				0FDCC3162A72C5C100B67287 /* HomeCoordinator.swift */,
+				0FDCC31B2A72C5CB00B67287 /* HomeFactory.swift */,
 			);
-			path = RegisterScreen;
-			sourceTree = "<group>";
-		};
-		0F56582E2A703F7700EA8AF9 /* RegisterScreen */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = RegisterScreen;
+			path = HomeScreen;
 			sourceTree = "<group>";
 		};
 		0F56582F2A703F7E00EA8AF9 /* RegisterScreen */ = {
@@ -231,6 +278,66 @@
 				0F5658442A703FB600EA8AF9 /* RegisterFactory.swift */,
 			);
 			path = RegisterScreen;
+			sourceTree = "<group>";
+		};
+		0FDCC3202A72DE3F00B67287 /* ProfileScreen */ = {
+			isa = PBXGroup;
+			children = (
+				0FDCC3242A72DE7D00B67287 /* ProfileController.swift */,
+				0FDCC3212A72DE7D00B67287 /* ProfileInteractor.swift */,
+				0FDCC3222A72DE7D00B67287 /* ProfilePresenter.swift */,
+				0FDCC3232A72DE7D00B67287 /* ProfileCoordinator.swift */,
+				0FDCC3252A72DE7D00B67287 /* ProfileFactory.swift */,
+			);
+			path = ProfileScreen;
+			sourceTree = "<group>";
+		};
+		0FDCC3432A72E07F00B67287 /* AddPostScreen */ = {
+			isa = PBXGroup;
+			children = (
+				0FDCC3472A72E0B000B67287 /* AddPostController.swift */,
+				0FDCC3442A72E0B000B67287 /* AddPostInteractor.swift */,
+				0FDCC3482A72E0B000B67287 /* AddPostPresenter.swift */,
+				0FDCC3452A72E0B000B67287 /* AddPostCoordinator.swift */,
+				0FDCC3462A72E0B000B67287 /* AddPostFactory.swift */,
+			);
+			path = AddPostScreen;
+			sourceTree = "<group>";
+		};
+		0FDCC35D2A72E39300B67287 /* MessagesScreen */ = {
+			isa = PBXGroup;
+			children = (
+				0FDCC3622A72E41300B67287 /* MessagesController.swift */,
+				0FDCC35E2A72E41300B67287 /* MessagesInteractor.swift */,
+				0FDCC35F2A72E41300B67287 /* MessagesPresenter.swift */,
+				0FDCC3612A72E41300B67287 /* MessagesCoordinator.swift */,
+				0FDCC3602A72E41300B67287 /* MessagesFactory.swift */,
+			);
+			path = MessagesScreen;
+			sourceTree = "<group>";
+		};
+		0FDCC36E2A72E54B00B67287 /* SettingsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				0FDCC36F2A72E5E100B67287 /* SettingsController.swift */,
+				0FDCC3712A72E5E100B67287 /* SettingsCoordinator.swift */,
+				0FDCC3732A72E5E200B67287 /* SettingsFactory.swift */,
+				0FDCC3702A72E5E100B67287 /* SettingsInteractor.swift */,
+				0FDCC3722A72E5E100B67287 /* SettingsPresenter.swift */,
+			);
+			path = SettingsScreen;
+			sourceTree = "<group>";
+		};
+		0FDCC37C2A72E7A300B67287 /* AppTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				0F56582E2A703F7700EA8AF9 /* HomeScreen */,
+				0FDCC3202A72DE3F00B67287 /* ProfileScreen */,
+				0FDCC3432A72E07F00B67287 /* AddPostScreen */,
+				0FDCC35D2A72E39300B67287 /* MessagesScreen */,
+				0FDCC36E2A72E54B00B67287 /* SettingsScreen */,
+			);
+			path = AppTabBar;
 			sourceTree = "<group>";
 		};
 		0FF9CFC22A6EC97300B3A7DF /* LoginScreen */ = {
@@ -508,13 +615,31 @@
 			files = (
 				0F11B5362A6EBAFA0031596D /* ViewController.swift in Sources */,
 				0F82D7992A6F2F8100E2C364 /* CustomButtonView.swift in Sources */,
+				0FDCC3672A72E41300B67287 /* MessagesController.swift in Sources */,
+				0FDCC34C2A72E0B000B67287 /* AddPostController.swift in Sources */,
+				0FDCC3492A72E0B000B67287 /* AddPostInteractor.swift in Sources */,
 				0F18E2832A6EDDF200CE2AF2 /* Constants.swift in Sources */,
+				0FDCC3272A72DE7D00B67287 /* ProfilePresenter.swift in Sources */,
 				0F11B5322A6EBAFA0031596D /* AppDelegate.swift in Sources */,
+				0FDCC3752A72E5E200B67287 /* SettingsInteractor.swift in Sources */,
+				0FDCC3772A72E5E200B67287 /* SettingsPresenter.swift in Sources */,
 				0FF9CFCF2A6ECA7A00B3A7DF /* LoginPresenter.swift in Sources */,
 				0F5658362A703F9500EA8AF9 /* RegisterInteractor.swift in Sources */,
+				0FDCC3762A72E5E200B67287 /* SettingsCoordinator.swift in Sources */,
+				0FDCC34A2A72E0B000B67287 /* AddPostCoordinator.swift in Sources */,
+				0FDCC3642A72E41300B67287 /* MessagesPresenter.swift in Sources */,
 				0F18E2C82A6F10F900CE2AF2 /* AuthenticationViewModel.swift in Sources */,
 				0FF9CFFB2A6ECD3000B3A7DF /* MainFlowCoordinator.swift in Sources */,
+				0FDCC3632A72E41300B67287 /* MessagesInteractor.swift in Sources */,
+				0FDCC3662A72E41300B67287 /* MessagesCoordinator.swift in Sources */,
+				0FDCC3742A72E5E200B67287 /* SettingsController.swift in Sources */,
+				0FDCC3102A72C5A900B67287 /* HomeInteractor.swift in Sources */,
+				0FDCC31C2A72C5CB00B67287 /* HomeFactory.swift in Sources */,
+				0FDCC3262A72DE7D00B67287 /* ProfileInteractor.swift in Sources */,
+				0FDCC3122A72C5B200B67287 /* HomePresenter.swift in Sources */,
 				0FF9CFCA2A6EC9E500B3A7DF /* LoginInteractor.swift in Sources */,
+				0FDCC3782A72E5E200B67287 /* SettingsFactory.swift in Sources */,
+				0FDCC3652A72E41300B67287 /* MessagesFactory.swift in Sources */,
 				0F5658312A703F8800EA8AF9 /* RegisterController.swift in Sources */,
 				0F11B53C2A6EBAFA0031596D /* Astrogram.xcdatamodeld in Sources */,
 				0FF9CFD92A6ECC0C00B3A7DF /* LoginFactory.swift in Sources */,
@@ -524,8 +649,15 @@
 				0FF9CFD42A6ECAEB00B3A7DF /* LoginCoordinator.swift in Sources */,
 				0F56583B2A703FA000EA8AF9 /* RegisterPresenter.swift in Sources */,
 				0F18E28B2A6EE05C00CE2AF2 /* Spaces.swift in Sources */,
+				0FDCC32A2A72DE7D00B67287 /* ProfileFactory.swift in Sources */,
+				0FDCC3172A72C5C100B67287 /* HomeCoordinator.swift in Sources */,
 				0F5658402A703FAB00EA8AF9 /* RegisterCoordinator.swift in Sources */,
+				0FDCC34B2A72E0B000B67287 /* AddPostFactory.swift in Sources */,
+				0FDCC34D2A72E0B000B67287 /* AddPostPresenter.swift in Sources */,
 				0F18E29D2A6EE84B00CE2AF2 /* Hexadecimals.swift in Sources */,
+				0FDCC3082A72C59F00B67287 /* HomeController.swift in Sources */,
+				0FDCC3282A72DE7D00B67287 /* ProfileCoordinator.swift in Sources */,
+				0FDCC3292A72DE7D00B67287 /* ProfileController.swift in Sources */,
 				0F537EF62A71655300806F22 /* CDefaultButton.swift in Sources */,
 				0F18E2932A6EE1FD00CE2AF2 /* CHGlassMorphismView.swift in Sources */,
 				0FF9CFBE2A6EC96E00B3A7DF /* LoginController.swift in Sources */,
