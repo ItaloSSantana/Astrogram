@@ -3,6 +3,7 @@ import Foundation
 protocol LoginPresenting: AnyObject {
     func registerPressed()
     func updateScreen()
+    func loginPressed()
 }
 
 final class LoginPresenter: LoginPresenting {
@@ -19,5 +20,9 @@ final class LoginPresenter: LoginPresenting {
     
     func updateScreen() {
         viewController?.doSomething()
+    }
+    
+    func loginPressed() {
+        coordinator.loginPressed()
     }
 }

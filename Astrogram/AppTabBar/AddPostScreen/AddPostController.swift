@@ -7,7 +7,7 @@ protocol AddPostDisplaying: AnyObject {
 final class AddPostController: ViewController<AddPostInteracting, UIView> {
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .green
+        view.backgroundColor = .red
     }
 }
 

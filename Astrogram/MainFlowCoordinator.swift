@@ -17,6 +17,11 @@ extension MainFlowCoordinator: LoginDelegate {
         let controller = RegisterFactory.make(delegate: self)
         navigationController.pushViewController(controller, animated: true)
     }
+    
+    func loginPressed() {
+        let tabController = AppTabBar()
+           navigationController.pushViewController(tabController, animated: true)
+    }
 }
 
 extension MainFlowCoordinator: RegisterDelegate {

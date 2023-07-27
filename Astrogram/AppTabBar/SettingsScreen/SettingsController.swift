@@ -7,7 +7,7 @@ protocol SettingsDisplaying: AnyObject {
 final class SettingsController: ViewController<SettingsInteracting, UIView> {
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .green
+        view.backgroundColor = .purple
     }
 }
 

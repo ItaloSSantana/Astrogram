@@ -7,7 +7,7 @@ protocol ProfileDisplaying: AnyObject {
 final class ProfileController: ViewController<ProfileInteracting, UIView> {
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .green
+        view.backgroundColor = .yellow
     }
 }
 
