@@ -2,6 +2,7 @@ import Foundation
 
 protocol SettingsPresenting: AnyObject {
     func displayScreen()
+    func editProfilePressed()
 }
 
 final class SettingsPresenter: SettingsPresenting {
@@ -18,6 +19,10 @@ final class SettingsPresenter: SettingsPresenting {
     
     func performAction() {
         // :- NEXT PR
+    }
+    
+    func editProfilePressed() {
+        coordinator.editProfilePressed()
     }
 }
     

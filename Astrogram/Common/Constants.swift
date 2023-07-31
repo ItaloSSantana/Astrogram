@@ -10,9 +10,12 @@ struct Constants {
         static let backIcon = "return"
         static let home = "home"
         static let profile = "profile"
-        static let add = "add"
+        static let add = "Add"
         static let messages = "messages"
-        static let settings = "settings"
+        static let settings = "Settings"
+        static let settingsBackground = "settingsBackground"
+        static let logout = "Shutdown"
+        static let defaultUser = "defaultUser"
     }
     
     struct Colors {
@@ -22,5 +25,4 @@ struct Constants {
         static let darkColor = "111111"
         static let darkBlue = "060420"
     }
-    
 }

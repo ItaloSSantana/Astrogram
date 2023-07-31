@@ -2,11 +2,13 @@ import UIKit
 
 protocol SettingsDelegate {
     func continueFlow()
+    func editProfilePressed()
 }
 
 protocol SettingsCoordinating: AnyObject {
     var viewController: UIViewController? {get set}
     func continueFlow()
+    func editProfilePressed()
 }
 
 final class SettingsCoordinator: SettingsCoordinating {
@@ -19,5 +21,9 @@ final class SettingsCoordinator: SettingsCoordinating {
     
     func continueFlow() {
         // :- NEXT PR
+    }
+    
+    func editProfilePressed() {
+        delegate.editProfilePressed()
     }
 }

@@ -61,6 +61,11 @@
 		0FF9CFD42A6ECAEB00B3A7DF /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF9CFD32A6ECAEB00B3A7DF /* LoginCoordinator.swift */; };
 		0FF9CFD92A6ECC0C00B3A7DF /* LoginFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF9CFD82A6ECC0C00B3A7DF /* LoginFactory.swift */; };
 		0FF9CFFB2A6ECD3000B3A7DF /* MainFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF9CFFA2A6ECD3000B3A7DF /* MainFlowCoordinator.swift */; };
+		0FFB1DF22A780F2A00E958AF /* EditProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFB1DED2A780F2A00E958AF /* EditProfileController.swift */; };
+		0FFB1DF32A780F2A00E958AF /* EditProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFB1DEE2A780F2A00E958AF /* EditProfileCoordinator.swift */; };
+		0FFB1DF42A780F2A00E958AF /* EditProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFB1DEF2A780F2A00E958AF /* EditProfileFactory.swift */; };
+		0FFB1DF52A780F2A00E958AF /* EditProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFB1DF02A780F2A00E958AF /* EditProfileInteractor.swift */; };
+		0FFB1DF62A780F2A00E958AF /* EditProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFB1DF12A780F2A00E958AF /* EditProfilePresenter.swift */; };
 		6468F74D46FBBB2C7FC9D64F /* Pods_Astrogram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DDA56D34E311B1EDC52375 /* Pods_Astrogram.framework */; };
 		93E471A7209A651E12FC906F /* Pods_Astrogram_AstrogramUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B2236D003426A8D38285262 /* Pods_Astrogram_AstrogramUITests.framework */; };
 		F3EC52111D6C0B5C96D700AD /* Pods_AstrogramTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FCC94F37873E27036D9ADC0 /* Pods_AstrogramTests.framework */; };
@@ -144,6 +149,11 @@
 		0FF9CFD32A6ECAEB00B3A7DF /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		0FF9CFD82A6ECC0C00B3A7DF /* LoginFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFactory.swift; sourceTree = "<group>"; };
 		0FF9CFFA2A6ECD3000B3A7DF /* MainFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowCoordinator.swift; sourceTree = "<group>"; };
+		0FFB1DED2A780F2A00E958AF /* EditProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileController.swift; sourceTree = "<group>"; };
+		0FFB1DEE2A780F2A00E958AF /* EditProfileCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileCoordinator.swift; sourceTree = "<group>"; };
+		0FFB1DEF2A780F2A00E958AF /* EditProfileFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileFactory.swift; sourceTree = "<group>"; };
+		0FFB1DF02A780F2A00E958AF /* EditProfileInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileInteractor.swift; sourceTree = "<group>"; };
+		0FFB1DF12A780F2A00E958AF /* EditProfilePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfilePresenter.swift; sourceTree = "<group>"; };
 		2B2236D003426A8D38285262 /* Pods_Astrogram_AstrogramUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Astrogram_AstrogramUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33DDA56D34E311B1EDC52375 /* Pods_Astrogram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Astrogram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FCC94F37873E27036D9ADC0 /* Pods_AstrogramTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AstrogramTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -322,10 +332,11 @@
 			isa = PBXGroup;
 			children = (
 				0FDCC36F2A72E5E100B67287 /* SettingsController.swift */,
-				0FDCC3712A72E5E100B67287 /* SettingsCoordinator.swift */,
-				0FDCC3732A72E5E200B67287 /* SettingsFactory.swift */,
 				0FDCC3702A72E5E100B67287 /* SettingsInteractor.swift */,
 				0FDCC3722A72E5E100B67287 /* SettingsPresenter.swift */,
+				0FDCC3712A72E5E100B67287 /* SettingsCoordinator.swift */,
+				0FDCC3732A72E5E200B67287 /* SettingsFactory.swift */,
+				0FFB1DEC2A780ED400E958AF /* EditProfileScreen */,
 			);
 			path = SettingsScreen;
 			sourceTree = "<group>";
@@ -353,6 +364,18 @@
 				0FF9CFD82A6ECC0C00B3A7DF /* LoginFactory.swift */,
 			);
 			path = LoginScreen;
+			sourceTree = "<group>";
+		};
+		0FFB1DEC2A780ED400E958AF /* EditProfileScreen */ = {
+			isa = PBXGroup;
+			children = (
+				0FFB1DED2A780F2A00E958AF /* EditProfileController.swift */,
+				0FFB1DF02A780F2A00E958AF /* EditProfileInteractor.swift */,
+				0FFB1DF12A780F2A00E958AF /* EditProfilePresenter.swift */,
+				0FFB1DEE2A780F2A00E958AF /* EditProfileCoordinator.swift */,
+				0FFB1DEF2A780F2A00E958AF /* EditProfileFactory.swift */,
+			);
+			path = EditProfileScreen;
 			sourceTree = "<group>";
 		};
 		476907F34315F00F05D5A44C /* Frameworks */ = {
@@ -622,6 +645,7 @@
 				0FDCC3672A72E41300B67287 /* MessagesController.swift in Sources */,
 				0FDCC34C2A72E0B000B67287 /* AddPostController.swift in Sources */,
 				0FDCC3492A72E0B000B67287 /* AddPostInteractor.swift in Sources */,
+				0FFB1DF42A780F2A00E958AF /* EditProfileFactory.swift in Sources */,
 				0F18E2832A6EDDF200CE2AF2 /* Constants.swift in Sources */,
 				0FDCC3272A72DE7D00B67287 /* ProfilePresenter.swift in Sources */,
 				0F11B5322A6EBAFA0031596D /* AppDelegate.swift in Sources */,
@@ -635,6 +659,7 @@
 				0F18E2C82A6F10F900CE2AF2 /* AuthenticationViewModel.swift in Sources */,
 				0FF9CFFB2A6ECD3000B3A7DF /* MainFlowCoordinator.swift in Sources */,
 				0FDCC3632A72E41300B67287 /* MessagesInteractor.swift in Sources */,
+				0FFB1DF62A780F2A00E958AF /* EditProfilePresenter.swift in Sources */,
 				0FDCC3662A72E41300B67287 /* MessagesCoordinator.swift in Sources */,
 				0FDCC3742A72E5E200B67287 /* SettingsController.swift in Sources */,
 				0FDCC3102A72C5A900B67287 /* HomeInteractor.swift in Sources */,
@@ -657,6 +682,9 @@
 				0FDCC3172A72C5C100B67287 /* HomeCoordinator.swift in Sources */,
 				0F5658402A703FAB00EA8AF9 /* RegisterCoordinator.swift in Sources */,
 				0FDCC34B2A72E0B000B67287 /* AddPostFactory.swift in Sources */,
+				0FFB1DF32A780F2A00E958AF /* EditProfileCoordinator.swift in Sources */,
+				0FFB1DF22A780F2A00E958AF /* EditProfileController.swift in Sources */,
+				0FFB1DF52A780F2A00E958AF /* EditProfileInteractor.swift in Sources */,
 				0FDCC34D2A72E0B000B67287 /* AddPostPresenter.swift in Sources */,
 				0F18E29D2A6EE84B00CE2AF2 /* Hexadecimals.swift in Sources */,
 				0FDCC3082A72C59F00B67287 /* HomeController.swift in Sources */,
