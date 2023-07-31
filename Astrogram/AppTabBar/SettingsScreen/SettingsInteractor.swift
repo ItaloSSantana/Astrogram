@@ -2,7 +2,7 @@ import Foundation
 
 protocol SettingsInteracting: AnyObject {
     func loadData()
-    func continueFlow()
+    func editProfilePressed()
 }
 
 final class SettingsInteractor: SettingsInteracting {
@@ -16,7 +16,7 @@ final class SettingsInteractor: SettingsInteracting {
         presenter.displayScreen()
     }
     
-    func continueFlow() {
-        // :- NEXT PR
+    func editProfilePressed() {
+        presenter.editProfilePressed()
     }
 }

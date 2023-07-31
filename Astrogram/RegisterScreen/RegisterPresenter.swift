@@ -16,6 +16,7 @@ final class RegisterPresenter: RegisterPresenting {
     
     func displayScreen() {
         print("registered, next screen")
+        coordinator.returnPressed()
     }
     
     func confirmTermsPressed(check: Bool) {

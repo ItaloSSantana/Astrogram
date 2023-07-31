@@ -58,7 +58,7 @@ final class SettingsController: ViewController<SettingsInteracting, UIView> {
         return label
     }()
     
-    private lazy var loginButton: UIButton = {
+    private lazy var editProfile: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor(hexaRGBA: Constants.Colors.yellowColor)
         button.clipsToBounds = true
@@ -66,6 +66,7 @@ final class SettingsController: ViewController<SettingsInteracting, UIView> {
         button.setTitle("Editar Perfil", for: .normal)
         button.titleLabel?.tintColor = .white
         button.titleLabel?.font = .systemFont(ofSize: 20)
+        button.addTarget(self, action: #selector(editProfilePressed), for: .touchUpInside)
         return button
     }()
     
@@ -80,7 +81,7 @@ final class SettingsController: ViewController<SettingsInteracting, UIView> {
         view.addSubview(userImage)
         view.addSubview(nameLabel)
         view.addSubview(nickLabel)
-        view.addSubview(loginButton)
+        view.addSubview(editProfile)
     }
     
     override func setupConstraints() {
@@ -110,13 +111,18 @@ final class SettingsController: ViewController<SettingsInteracting, UIView> {
             $0.centerX.equalToSuperview()
         }
         
-        loginButton.snp.makeConstraints {
+        editProfile.snp.makeConstraints {
             $0.top.equalTo(nickLabel.snp.bottom).offset(Space.base03.rawValue)
             $0.centerX.equalToSuperview()
             $0.height.equalTo(30)
             $0.width.equalTo(120)
         }
     }
+    
+    @objc private func editProfilePressed() {
+        interactor.editProfilePressed()
+    }
+    
 }
 
 extension SettingsController: SettingsDisplaying {

@@ -96,5 +96,14 @@ extension AppTabBar: MessagesDelegate {
 }
 
 extension AppTabBar: SettingsDelegate {
-    
+    func editProfilePressed() {
+        let editController = EditProfileFactory.make(delegate: self)
+        navigationController?.pushViewController(editController, animated: true)
+    }
+}
+
+extension AppTabBar: EditProfileDelegate {
+    func returnPressed() {
+        navigationController?.popViewController(animated: true)
+    }
 }
