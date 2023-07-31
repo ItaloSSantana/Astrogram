@@ -8,6 +8,7 @@ protocol LoginInteracting: AnyObject {
     func googlePressed()
     func registerPressed()
     func logoutPressed()
+    func loginPressed()
 }
 
 final class LoginInteractor: LoginInteracting {
@@ -31,5 +32,9 @@ final class LoginInteractor: LoginInteracting {
     
     func logoutPressed() {
         authViewModel.signOut()
+    }
+    
+    func loginPressed() {
+        presenter.loginPressed()
     }
 }

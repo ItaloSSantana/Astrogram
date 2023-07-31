@@ -42,7 +42,7 @@ class LoginController: ViewController<LoginInteracting, UIView> {
         button.setTitle("Entrar", for: .normal)
         button.titleLabel?.tintColor = .white
         button.titleLabel?.font = .systemFont(ofSize: 20)
-        button.addTarget(self, action: #selector(logoutPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(loginPressed), for: .touchUpInside)
         return button
     }()
     
@@ -149,6 +149,10 @@ class LoginController: ViewController<LoginInteracting, UIView> {
     
     @objc private func logoutPressed() {
         interactor.logoutPressed()
+    }
+    
+    @objc private func loginPressed() {
+        interactor.loginPressed()
     }
 }
 
