@@ -5,14 +5,14 @@ protocol SettingsDisplaying: AnyObject {
 }
 
 final class SettingsController: ViewController<SettingsInteracting, UIView> {
-    let backgroundImage: UIImageView = {
+    private lazy var  backgroundImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: Constants.Images.settingsBackground)
         return image
     }()
     
-    let userImage: UIImageView = {
-       let image = UIImageView()
+    private lazy var  userImage: UIImageView = {
+        let image = UIImageView()
         image.image = UIImage(named: Constants.Images.defaultUser)
         image.clipsToBounds = true
         image.layer.cornerRadius = 65
@@ -22,16 +22,19 @@ final class SettingsController: ViewController<SettingsInteracting, UIView> {
         return image
     }()
     
-    let logoutButton: CDefaultButton = {
+    private lazy var logoutButton: CDefaultButton = {
         let button = CDefaultButton(image: Constants.Images.logout,
                                     radius: 21,
                                     color: Constants.Colors.yellowColor,
                                     shadow: Constants.Colors.blackColor)
+        button.action = {
+            self.logoutPressed()
+        }
         return button
     }()
     
-    let nameLabel: UILabel = {
-       let label = UILabel()
+    private lazy var  nameLabel: UILabel = {
+        let label = UILabel()
         label.text = "Ryan Gosling"
         label.font = .systemFont(ofSize: 28)
         label.textColor = .white
@@ -44,8 +47,8 @@ final class SettingsController: ViewController<SettingsInteracting, UIView> {
         return label
     }()
     
-    let nickLabel: UILabel = {
-       let label = UILabel()
+    private lazy var  nickLabel: UILabel = {
+        let label = UILabel()
         label.text = "@realGosling"
         label.font = .systemFont(ofSize: 18)
         label.textColor = .white
@@ -121,6 +124,10 @@ final class SettingsController: ViewController<SettingsInteracting, UIView> {
     
     @objc private func editProfilePressed() {
         interactor.editProfilePressed()
+    }
+    
+    @objc private func logoutPressed() {
+        interactor.logoutPressed()
     }
     
 }

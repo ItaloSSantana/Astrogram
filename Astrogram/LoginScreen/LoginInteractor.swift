@@ -4,24 +4,40 @@ import FirebaseCore
 import GoogleSignIn
 
 protocol LoginInteracting: AnyObject {
-    func updateScreen()
+    func validateLogin(email: String?, password: String?)
+    func verifyLogin()
     func googlePressed()
     func registerPressed()
-    func logoutPressed()
-    func loginPressed()
 }
 
 final class LoginInteractor: LoginInteracting {
     private let presenter: LoginPresenting
     var authViewModel = AuthenticationViewModel()
     
+    private var auth: Auth?
+    
     init(presenter: LoginPresenting) {
         self.presenter = presenter
+        auth = Auth.auth()
     }
     
-    func updateScreen() {
-        presenter.updateScreen()
+    func validateLogin(email: String?, password: String?) {
+        guard let safeEmail = email, let safePassword = password else {return}
+        auth?.signIn(withEmail: safeEmail, password: safePassword, completion: { (user, error) in
+            if user != nil {
+                self.presenter.confirmLogin()
+            } else {
+                print("Not logged")
+            }
+        })
     }
+    
+    func verifyLogin() {
+        if (auth?.currentUser) != nil {
+            self.presenter.confirmAutoLogin()
+        }
+    }
+    
     func googlePressed() {
         authViewModel.signIn()
     }
@@ -32,9 +48,5 @@ final class LoginInteractor: LoginInteracting {
     
     func logoutPressed() {
         authViewModel.signOut()
-    }
-    
-    func loginPressed() {
-        presenter.loginPressed()
     }
 }

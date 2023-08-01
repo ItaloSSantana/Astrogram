@@ -3,6 +3,7 @@ import Foundation
 protocol SettingsPresenting: AnyObject {
     func displayScreen()
     func editProfilePressed()
+    func logoutPressed()
 }
 
 final class SettingsPresenter: SettingsPresenting {
@@ -23,6 +24,10 @@ final class SettingsPresenter: SettingsPresenting {
     
     func editProfilePressed() {
         coordinator.editProfilePressed()
+    }
+    
+    func logoutPressed() {
+        coordinator.logoutPressed()
     }
 }
     

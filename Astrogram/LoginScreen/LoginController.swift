@@ -70,9 +70,7 @@ class LoginController: ViewController<LoginInteracting, UIView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
-        interactor.updateScreen()
-     
+        interactor.verifyLogin()
     }
     
     override func buildViewHierarchy() {
@@ -84,7 +82,6 @@ class LoginController: ViewController<LoginInteracting, UIView> {
         glassView.addSubview(loginButton)
         glassView.addSubview(registerButton)
         glassView.addSubview(googleButton)
-      //  glassView.addSubview(facebookButton)
     }
     
     override func setupConstraints() {
@@ -131,12 +128,6 @@ class LoginController: ViewController<LoginInteracting, UIView> {
             $0.bottom.equalTo(glassView).offset(-Space.base03.rawValue)
             $0.height.equalTo(60)
         }
-        
-//        facebookButton.snp.makeConstraints {
-//            $0.top.equalTo(googleButton.snp.bottom).offset(Space.base04.rawValue)
-//            $0.leading.trailing.equalTo(glassView).inset(Space.base05.rawValue)
-//            $0.height.equalTo(60)
-//        }
     }
 
     @objc private func signInGoogle() {
@@ -146,13 +137,9 @@ class LoginController: ViewController<LoginInteracting, UIView> {
     @objc private func registerPressed() {
         interactor.registerPressed()
     }
-    
-    @objc private func logoutPressed() {
-        interactor.logoutPressed()
-    }
-    
+ 
     @objc private func loginPressed() {
-        interactor.loginPressed()
+        interactor.validateLogin(email: emailTextField.getText(), password: passwordTextField.getText())
     }
 }
 

@@ -100,6 +100,10 @@ extension AppTabBar: SettingsDelegate {
         let editController = EditProfileFactory.make(delegate: self)
         navigationController?.pushViewController(editController, animated: true)
     }
+    
+    func logoutPressed() {
+        navigationController?.popToRootViewController(animated: true)
+    }
 }
 
 extension AppTabBar: EditProfileDelegate {

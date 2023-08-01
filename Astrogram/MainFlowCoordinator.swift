@@ -22,6 +22,16 @@ extension MainFlowCoordinator: LoginDelegate {
         let tabController = AppTabBar()
            navigationController.pushViewController(tabController, animated: true)
     }
+    
+    func confirmLogin() {
+        let tabController = AppTabBar()
+           navigationController.pushViewController(tabController, animated: true)
+    }
+    
+    func confirmAutoLogin() {
+        let tabController = AppTabBar()
+           navigationController.pushViewController(tabController, animated: true)
+    }
 }
 
 extension MainFlowCoordinator: RegisterDelegate {

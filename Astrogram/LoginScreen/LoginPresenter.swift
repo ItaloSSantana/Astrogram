@@ -4,6 +4,8 @@ protocol LoginPresenting: AnyObject {
     func registerPressed()
     func updateScreen()
     func loginPressed()
+    func confirmLogin()
+    func confirmAutoLogin()
 }
 
 final class LoginPresenter: LoginPresenting {
@@ -24,5 +26,13 @@ final class LoginPresenter: LoginPresenting {
     
     func loginPressed() {
         coordinator.loginPressed()
+    }
+    
+    func confirmLogin() {
+        coordinator.confirmLogin()
+    }
+    
+    func confirmAutoLogin() {
+        coordinator.confirmAutoLogin()
     }
 }
