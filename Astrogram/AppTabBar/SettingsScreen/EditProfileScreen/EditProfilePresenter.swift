@@ -3,6 +3,7 @@ import Foundation
 protocol EditProfilePresenting: AnyObject {
     func loadUserData(viewModel: UserDataViewModel)
     func returnPressed()
+    func saveChanges()
 }
 
 final class EditProfilePresenter: EditProfilePresenting {
@@ -16,12 +17,12 @@ final class EditProfilePresenter: EditProfilePresenting {
     func loadUserData(viewModel: UserDataViewModel) {
         viewController?.loadUserData(viewModel: viewModel)
     }
-    
-    func performAction() {
-        // :- NEXT PR
+ 
+    func returnPressed() {
+        coordinator.returnPressed()
     }
     
-    func returnPressed() {
+    func saveChanges() {
         coordinator.returnPressed()
     }
 }

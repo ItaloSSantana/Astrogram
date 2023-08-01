@@ -66,6 +66,7 @@ final class EditProfileController: ViewController<EditProfileInteracting, UIView
         button.setTitle("Confirmar", for: .normal)
         button.titleLabel?.tintColor = .white
         button.titleLabel?.font = .systemFont(ofSize: 20)
+        button.addTarget(self, action: #selector(confirmChangesPressed), for: .touchUpInside)
         return button
     }()
     
@@ -151,7 +152,11 @@ final class EditProfileController: ViewController<EditProfileInteracting, UIView
     }
     
     @objc private func confirmChangesPressed() {
-        interactor.saveChanges()
+        guard let image = userImage.image else {return}
+        interactor.saveChanges(name: nameTextField.getText(),
+                               nick: nickTextField.getText(),
+                               email: emailTextField.getText(),
+                               image: image)
     }
 }
 
