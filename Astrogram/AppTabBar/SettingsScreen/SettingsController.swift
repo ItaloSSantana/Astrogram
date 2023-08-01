@@ -74,6 +74,8 @@ final class SettingsController: ViewController<SettingsInteracting, UIView> {
         return button
     }()
     
+    private var userViewModel: UserDataViewModel?
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         interactor.loadData()
@@ -134,21 +136,21 @@ final class SettingsController: ViewController<SettingsInteracting, UIView> {
     }
     
     @objc private func editProfilePressed() {
-        interactor.editProfilePressed()
+        guard let safeViewModel = userViewModel else {return}
+        interactor.editProfilePressed(viewModel: safeViewModel)
     }
     
     @objc private func logoutPressed() {
         interactor.logoutPressed()
     }
-    
 }
 
 extension SettingsController: SettingsDisplaying {
     func loadUserData(data: UserDataViewModel) {
+        userViewModel = data
         nameLabel.text = data.name
         nickLabel.text = "@\(data.nick)"
-        print("here")
         userImage.kf.setImage(with: URL(string: data.image))
-        print("here 2")
+        
     }
 }

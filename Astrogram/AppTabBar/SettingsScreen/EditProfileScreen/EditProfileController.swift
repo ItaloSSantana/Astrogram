@@ -1,7 +1,7 @@
 import UIKit
 
 protocol EditProfileDisplaying: AnyObject {
-    func doSomething()
+    func loadUserData(viewModel: UserDataViewModel)
 }
 
 final class EditProfileController: ViewController<EditProfileInteracting, UIView> {
@@ -22,7 +22,6 @@ final class EditProfileController: ViewController<EditProfileInteracting, UIView
     
     let userImage: UIImageView = {
        let image = UIImageView()
-        image.image = UIImage(named: Constants.Images.defaultUser)
         image.clipsToBounds = true
         image.layer.cornerRadius = 65
         image.layer.borderWidth = 4
@@ -39,6 +38,7 @@ final class EditProfileController: ViewController<EditProfileInteracting, UIView
         button.setTitle("Trocar Imagem", for: .normal)
         button.titleLabel?.tintColor = .white
         button.titleLabel?.font = .systemFont(ofSize: 15)
+        button.addTarget(self, action: #selector(changeImagePressed), for: .touchUpInside)
         return button
     }()
     
@@ -63,15 +63,22 @@ final class EditProfileController: ViewController<EditProfileInteracting, UIView
         button.backgroundColor = UIColor(hexaRGBA: Constants.Colors.yellowColor)
         button.clipsToBounds = true
         button.layer.cornerRadius = 20
-        button.setTitle("Trocar Imagem", for: .normal)
+        button.setTitle("Confirmar", for: .normal)
         button.titleLabel?.tintColor = .white
-        button.titleLabel?.font = .systemFont(ofSize: 18)
+        button.titleLabel?.font = .systemFont(ofSize: 20)
         return button
     }()
     
+    private var imagePicker = UIImagePickerController()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
+        imagePicker.delegate = self
+        interactor.loadUserData()
     }
     
     override func buildViewHierarchy() {
@@ -142,10 +149,31 @@ final class EditProfileController: ViewController<EditProfileInteracting, UIView
     @objc private func returnPressed() {
         interactor.returnPressed()
     }
+    
+    @objc private func confirmChangesPressed() {
+        interactor.saveChanges()
+    }
 }
 
 extension EditProfileController: EditProfileDisplaying {
-    func doSomething() {
-        //
+    func loadUserData(viewModel: UserDataViewModel) {
+        nameTextField.setText(text: viewModel.name)
+        nickTextField.setText(text: viewModel.nick)
+        emailTextField.setText(text: viewModel.email)
+        userImage.kf.setImage(with: URL(string: viewModel.image))
+    }
+}
+
+extension EditProfileController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+   @objc private func changeImagePressed() {
+        imagePicker.sourceType = .savedPhotosAlbum
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let safeImage = info [UIImagePickerController.InfoKey.originalImage] as? UIImage {
+        self.userImage.image = safeImage
+        imagePicker.dismiss(animated: true, completion: nil)
+        }
     }
 }

@@ -1,7 +1,7 @@
 import Foundation
 
 protocol EditProfilePresenting: AnyObject {
-    func displayScreen()
+    func loadUserData(viewModel: UserDataViewModel)
     func returnPressed()
 }
 
@@ -13,8 +13,8 @@ final class EditProfilePresenter: EditProfilePresenting {
         self.coordinator = coordinator
     }
     
-    func displayScreen() {
-        viewController?.doSomething()
+    func loadUserData(viewModel: UserDataViewModel) {
+        viewController?.loadUserData(viewModel: viewModel)
     }
     
     func performAction() {

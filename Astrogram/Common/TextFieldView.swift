@@ -63,7 +63,6 @@ class TextFieldView: UIView {
     
     func setText(text: String){
         textfield.text = text
-        print(text)
     }
     
     func setInput(input: UIView) {
