@@ -1,9 +1,9 @@
 import Foundation
 
 protocol SettingsPresenting: AnyObject {
-    func displayScreen()
     func editProfilePressed()
     func logoutPressed()
+    func loadUserData(data: UserDataViewModel)
 }
 
 final class SettingsPresenter: SettingsPresenting {
@@ -14,8 +14,8 @@ final class SettingsPresenter: SettingsPresenting {
         self.coordinator = coordinator
     }
     
-    func displayScreen() {
-        viewController?.doSomething()
+    func loadUserData(data: UserDataViewModel) {
+        viewController?.loadUserData(data: data)
     }
     
     func performAction() {

@@ -33,7 +33,7 @@ final class LoginInteractor: LoginInteracting {
     }
     
     func verifyLogin() {
-        if (auth?.currentUser) != nil {
+        if let user = auth?.currentUser {
             self.presenter.confirmAutoLogin()
         }
     }

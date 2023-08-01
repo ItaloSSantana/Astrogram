@@ -1,7 +1,8 @@
 import UIKit
+import Kingfisher
 
 protocol SettingsDisplaying: AnyObject {
-    func doSomething()
+    func loadUserData(data: UserDataViewModel)
 }
 
 final class SettingsController: ViewController<SettingsInteracting, UIView> {
@@ -13,7 +14,7 @@ final class SettingsController: ViewController<SettingsInteracting, UIView> {
     
     private lazy var  userImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: Constants.Images.defaultUser)
+      //  image.image = UIImage(named: Constants.Images.defaultUser)
         image.clipsToBounds = true
         image.layer.cornerRadius = 65
         image.layer.borderWidth = 4
@@ -72,6 +73,11 @@ final class SettingsController: ViewController<SettingsInteracting, UIView> {
         button.addTarget(self, action: #selector(editProfilePressed), for: .touchUpInside)
         return button
     }()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        interactor.loadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -133,7 +139,11 @@ final class SettingsController: ViewController<SettingsInteracting, UIView> {
 }
 
 extension SettingsController: SettingsDisplaying {
-    func doSomething() {
-        //
+    func loadUserData(data: UserDataViewModel) {
+        nameLabel.text = data.name
+        nickLabel.text = data.nick
+        print("here")
+        userImage.kf.setImage(with: URL(string: data.image))
+        print("here 2")
     }
 }
