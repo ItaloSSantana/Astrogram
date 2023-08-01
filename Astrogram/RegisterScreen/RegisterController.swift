@@ -1,7 +1,6 @@
 import UIKit
 
 protocol RegisterDisplaying: AnyObject {
-    func doSomething()
     func confirmTermsPressed(check: Bool)
 }
 
@@ -47,6 +46,8 @@ final class RegisterController: ViewController<RegisterInteracting, UIView> {
     }()
     
     private lazy var nameTextField = TextFieldView(title: "Insira seu Nome")
+    
+    private lazy var nickTextField = TextFieldView(title: "Insira seu Apelido")
     
     private lazy var emailTextField = TextFieldView(title: "Insira seu Email")
     
@@ -107,6 +108,7 @@ final class RegisterController: ViewController<RegisterInteracting, UIView> {
         view.addSubview(createLabel)
         view.addSubview(glassView)
         glassView.addSubview(nameTextField)
+        glassView.addSubview(nickTextField)
         glassView.addSubview(emailTextField)
         glassView.addSubview(passwordTextField)
         glassView.addSubview(confirmPasswordTextField)
@@ -134,7 +136,7 @@ final class RegisterController: ViewController<RegisterInteracting, UIView> {
         glassView.snp.makeConstraints {
             $0.top.equalTo(createLabel.snp.bottom).offset(Space.base16.rawValue)
             $0.leading.trailing.equalToSuperview().inset(Space.base06.rawValue)
-            $0.bottom.equalToSuperview().offset(-Space.base30.rawValue)
+           // $0.bottom.equalToSuperview().offset(-Space.base30.rawValue)
         }
         
         nameTextField.snp.makeConstraints {
@@ -142,8 +144,13 @@ final class RegisterController: ViewController<RegisterInteracting, UIView> {
             $0.leading.trailing.equalTo(glassView).inset(Space.base05.rawValue)
         }
         
-        emailTextField.snp.makeConstraints {
+        nickTextField.snp.makeConstraints {
             $0.top.equalTo(nameTextField.snp.bottom).offset(Space.base03.rawValue)
+            $0.leading.trailing.equalTo(glassView).inset(Space.base05.rawValue)
+        }
+        
+        emailTextField.snp.makeConstraints {
+            $0.top.equalTo(nickTextField.snp.bottom).offset(Space.base03.rawValue)
             $0.leading.trailing.equalTo(glassView).inset(Space.base05.rawValue)
         }
         
@@ -172,12 +179,14 @@ final class RegisterController: ViewController<RegisterInteracting, UIView> {
         registerButton.snp.makeConstraints {
             $0.top.equalTo(termsLabel.snp.bottom).offset(Space.base06.rawValue)
             $0.leading.trailing.equalTo(glassView).inset(Space.base20.rawValue)
+            $0.bottom.equalTo(glassView.snp.bottom).offset(-Space.base04.rawValue)
             $0.height.equalTo(40)
         }
     }
     
     @objc private func registerPressed() {
         interactor.registerUser(name: nameTextField.getText(),
+                                nick: nickTextField.getText(),
                                 email: emailTextField.getText(),
                                 password: passwordTextField.getText(),
                                 confirm: confirmPasswordTextField.getText(),
@@ -201,9 +210,5 @@ extension RegisterController: RegisterDisplaying {
         } else {
             checkbox.setImage(image: "")
         }
-    }
-    
-    func doSomething() {
-        //
     }
 }

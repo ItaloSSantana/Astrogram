@@ -3,6 +3,8 @@ import UIKit
 protocol LoginDelegate: AnyObject {
     func registerPressed()
     func loginPressed()
+    func confirmLogin()
+    func confirmAutoLogin()
 }
 
 protocol LoginCoordinating: AnyObject {
@@ -10,6 +12,7 @@ protocol LoginCoordinating: AnyObject {
     func confirmAutoLogin()
     func registerPressed()
     func loginPressed()
+    func confirmLogin()
 }
 
 final class LoginCoordinator: LoginCoordinating {
@@ -21,7 +24,7 @@ final class LoginCoordinator: LoginCoordinating {
     }
     
     func confirmAutoLogin() {
-        //
+        delegate.confirmAutoLogin()
     }
     
     func registerPressed() {
@@ -30,6 +33,10 @@ final class LoginCoordinator: LoginCoordinating {
     
     func loginPressed() {
         delegate.loginPressed()
+    }
+    
+    func confirmLogin() {
+        delegate.confirmLogin()
     }
     
 }

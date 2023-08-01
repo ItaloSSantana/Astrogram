@@ -1,19 +1,20 @@
 import UIKit
+import Kingfisher
 
 protocol SettingsDisplaying: AnyObject {
-    func doSomething()
+    func loadUserData(data: UserDataViewModel)
 }
 
 final class SettingsController: ViewController<SettingsInteracting, UIView> {
-    let backgroundImage: UIImageView = {
+    private lazy var  backgroundImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: Constants.Images.settingsBackground)
         return image
     }()
     
-    let userImage: UIImageView = {
-       let image = UIImageView()
-        image.image = UIImage(named: Constants.Images.defaultUser)
+    private lazy var  userImage: UIImageView = {
+        let image = UIImageView()
+      //  image.image = UIImage(named: Constants.Images.defaultUser)
         image.clipsToBounds = true
         image.layer.cornerRadius = 65
         image.layer.borderWidth = 4
@@ -22,16 +23,19 @@ final class SettingsController: ViewController<SettingsInteracting, UIView> {
         return image
     }()
     
-    let logoutButton: CDefaultButton = {
+    private lazy var logoutButton: CDefaultButton = {
         let button = CDefaultButton(image: Constants.Images.logout,
                                     radius: 21,
                                     color: Constants.Colors.yellowColor,
                                     shadow: Constants.Colors.blackColor)
+        button.action = {
+            self.logoutPressed()
+        }
         return button
     }()
     
-    let nameLabel: UILabel = {
-       let label = UILabel()
+    private lazy var  nameLabel: UILabel = {
+        let label = UILabel()
         label.text = "Ryan Gosling"
         label.font = .systemFont(ofSize: 28)
         label.textColor = .white
@@ -44,8 +48,8 @@ final class SettingsController: ViewController<SettingsInteracting, UIView> {
         return label
     }()
     
-    let nickLabel: UILabel = {
-       let label = UILabel()
+    private lazy var  nickLabel: UILabel = {
+        let label = UILabel()
         label.text = "@realGosling"
         label.font = .systemFont(ofSize: 18)
         label.textColor = .white
@@ -70,9 +74,19 @@ final class SettingsController: ViewController<SettingsInteracting, UIView> {
         return button
     }()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        interactor.loadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .purple
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        interactor.removeListener()
     }
     
     override func buildViewHierarchy() {
@@ -123,10 +137,18 @@ final class SettingsController: ViewController<SettingsInteracting, UIView> {
         interactor.editProfilePressed()
     }
     
+    @objc private func logoutPressed() {
+        interactor.logoutPressed()
+    }
+    
 }
 
 extension SettingsController: SettingsDisplaying {
-    func doSomething() {
-        //
+    func loadUserData(data: UserDataViewModel) {
+        nameLabel.text = data.name
+        nickLabel.text = "@\(data.nick)"
+        print("here")
+        userImage.kf.setImage(with: URL(string: data.image))
+        print("here 2")
     }
 }
