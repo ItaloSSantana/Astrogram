@@ -1,7 +1,6 @@
 import UIKit
 
 protocol RegisterDisplaying: AnyObject {
-    func doSomething()
     func confirmTermsPressed(check: Bool)
 }
 
@@ -211,9 +210,5 @@ extension RegisterController: RegisterDisplaying {
         } else {
             checkbox.setImage(image: "")
         }
-    }
-    
-    func doSomething() {
-        //
     }
 }

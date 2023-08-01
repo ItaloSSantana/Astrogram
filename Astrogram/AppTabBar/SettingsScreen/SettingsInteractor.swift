@@ -8,6 +8,7 @@ protocol SettingsInteracting: AnyObject {
     func loadData()
     func editProfilePressed()
     func logoutPressed()
+    func removeListener()
 }
 
 final class SettingsInteractor: SettingsInteracting {
@@ -50,6 +51,10 @@ final class SettingsInteractor: SettingsInteracting {
     func logoutPressed() {
         authView.signOut()
         presenter.logoutPressed()
+    }
+    
+    func removeListener() {
+        listener?.remove()
     }
 }
 

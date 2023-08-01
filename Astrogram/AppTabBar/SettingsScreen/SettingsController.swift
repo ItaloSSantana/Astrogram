@@ -84,6 +84,11 @@ final class SettingsController: ViewController<SettingsInteracting, UIView> {
         view.backgroundColor = .purple
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        interactor.removeListener()
+    }
+    
     override func buildViewHierarchy() {
         view.addSubview(backgroundImage)
         view.addSubview(logoutButton)
@@ -141,7 +146,7 @@ final class SettingsController: ViewController<SettingsInteracting, UIView> {
 extension SettingsController: SettingsDisplaying {
     func loadUserData(data: UserDataViewModel) {
         nameLabel.text = data.name
-        nickLabel.text = data.nick
+        nickLabel.text = "@\(data.nick)"
         print("here")
         userImage.kf.setImage(with: URL(string: data.image))
         print("here 2")

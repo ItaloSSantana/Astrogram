@@ -63,9 +63,13 @@ class AuthenticationViewModel: ObservableObject {
                     if let safeResult = result, safeResult.exists {
                         print("user already exists")
                     } else {
+                        let imageURL = "https://firebasestorage.googleapis.com/v0/b/astrogram-5c6e2.appspot.com/o/images%2Fprofile%2FprofilePicture.png?alt=media&token=675c391e-5da2-4792-a8c2-294c82b40f0d"
                         db.collection("users")
                             .document(uid)
-                            .setData(["name": user?.profile?.name, "email": user?.profile?.email])
+                            .setData(["name": user?.profile?.name,
+                                      "nickName" : user?.profile?.givenName,
+                                      "email": user?.profile?.email,
+                                      "imageURL": imageURL])
                     }
                 }
         }
