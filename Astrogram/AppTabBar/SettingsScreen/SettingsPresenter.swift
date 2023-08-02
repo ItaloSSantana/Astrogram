@@ -1,7 +1,7 @@
 import Foundation
 
 protocol SettingsPresenting: AnyObject {
-    func editProfilePressed()
+    func editProfilePressed(viewModel: UserDataViewModel)
     func logoutPressed()
     func loadUserData(data: UserDataViewModel)
 }
@@ -22,8 +22,8 @@ final class SettingsPresenter: SettingsPresenting {
         // :- NEXT PR
     }
     
-    func editProfilePressed() {
-        coordinator.editProfilePressed()
+    func editProfilePressed(viewModel: UserDataViewModel) {
+        coordinator.editProfilePressed(viewModel: viewModel)
     }
     
     func logoutPressed() {

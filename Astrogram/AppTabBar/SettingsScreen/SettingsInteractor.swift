@@ -6,7 +6,7 @@ import FirebaseStorage
 
 protocol SettingsInteracting: AnyObject {
     func loadData()
-    func editProfilePressed()
+    func editProfilePressed(viewModel: UserDataViewModel)
     func logoutPressed()
     func removeListener()
 }
@@ -44,8 +44,12 @@ final class SettingsInteractor: SettingsInteracting {
         })
     }
     
-    func editProfilePressed() {
-        presenter.editProfilePressed()
+    func editProfilePressed(viewModel: UserDataViewModel) {
+        presenter.editProfilePressed(viewModel: viewModel)
+    }
+    
+    private func loadUserData() {
+        
     }
     
     func logoutPressed() {

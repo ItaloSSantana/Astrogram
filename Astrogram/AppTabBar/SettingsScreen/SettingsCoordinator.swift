@@ -1,13 +1,13 @@
 import UIKit
 
 protocol SettingsDelegate {
-    func editProfilePressed()
+    func editProfilePressed(viewModel: UserDataViewModel)
     func logoutPressed()
 }
 
 protocol SettingsCoordinating: AnyObject {
     var viewController: UIViewController? {get set}
-    func editProfilePressed()
+    func editProfilePressed(viewModel: UserDataViewModel)
     func logoutPressed()
 }
 
@@ -19,8 +19,8 @@ final class SettingsCoordinator: SettingsCoordinating {
         self.delegate = delegate
     }
    
-    func editProfilePressed() {
-        delegate.editProfilePressed()
+    func editProfilePressed(viewModel: UserDataViewModel) {
+        delegate.editProfilePressed(viewModel: viewModel)
     }
     
     func logoutPressed() {
