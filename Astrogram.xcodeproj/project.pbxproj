@@ -27,6 +27,7 @@
 		0F56583B2A703FA000EA8AF9 /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F56583A2A703FA000EA8AF9 /* RegisterPresenter.swift */; };
 		0F5658402A703FAB00EA8AF9 /* RegisterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F56583F2A703FAB00EA8AF9 /* RegisterCoordinator.swift */; };
 		0F5658452A703FB600EA8AF9 /* RegisterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5658442A703FB600EA8AF9 /* RegisterFactory.swift */; };
+		0F587BEB2A7D462B0093FEC8 /* HomeStoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F587BEA2A7D462B0093FEC8 /* HomeStoriesCell.swift */; };
 		0F82D7992A6F2F8100E2C364 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F82D7982A6F2F8100E2C364 /* CustomButtonView.swift */; };
 		0FC4EFDB2A797F6600E3B5E4 /* UserDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC4EFDA2A797F6600E3B5E4 /* UserDataViewModel.swift */; };
 		0FDCC3082A72C59F00B67287 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCC3072A72C59F00B67287 /* HomeController.swift */; };
@@ -116,6 +117,7 @@
 		0F56583A2A703FA000EA8AF9 /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
 		0F56583F2A703FAB00EA8AF9 /* RegisterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCoordinator.swift; sourceTree = "<group>"; };
 		0F5658442A703FB600EA8AF9 /* RegisterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterFactory.swift; sourceTree = "<group>"; };
+		0F587BEA2A7D462B0093FEC8 /* HomeStoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStoriesCell.swift; sourceTree = "<group>"; };
 		0F82D7982A6F2F8100E2C364 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 		0FC4EFDA2A797F6600E3B5E4 /* UserDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataViewModel.swift; sourceTree = "<group>"; };
 		0FDCC3072A72C59F00B67287 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				0FDCC3112A72C5B200B67287 /* HomePresenter.swift */,
 				0FDCC3162A72C5C100B67287 /* HomeCoordinator.swift */,
 				0FDCC31B2A72C5CB00B67287 /* HomeFactory.swift */,
+				0F587BEA2A7D462B0093FEC8 /* HomeStoriesCell.swift */,
 			);
 			path = HomeScreen;
 			sourceTree = "<group>";
@@ -692,6 +695,7 @@
 				0F18E28B2A6EE05C00CE2AF2 /* Spaces.swift in Sources */,
 				0FDCC32A2A72DE7D00B67287 /* ProfileFactory.swift in Sources */,
 				0FDCC3172A72C5C100B67287 /* HomeCoordinator.swift in Sources */,
+				0F587BEB2A7D462B0093FEC8 /* HomeStoriesCell.swift in Sources */,
 				0F5658402A703FAB00EA8AF9 /* RegisterCoordinator.swift in Sources */,
 				0FDCC34B2A72E0B000B67287 /* AddPostFactory.swift in Sources */,
 				0FFB1DF32A780F2A00E958AF /* EditProfileCoordinator.swift in Sources */,
