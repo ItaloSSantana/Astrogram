@@ -1,7 +1,7 @@
 import Foundation
 
 protocol AddPostPresenting: AnyObject {
-    func displayScreen()
+    func savePost()
 }
 
 final class AddPostPresenter: AddPostPresenting {
@@ -12,8 +12,8 @@ final class AddPostPresenter: AddPostPresenting {
         self.coordinator = coordinator
     }
     
-    func displayScreen() {
-        viewController?.doSomething()
+    func savePost() {
+        viewController?.savePost()
     }
     
     func performAction() {

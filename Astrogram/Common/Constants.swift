@@ -16,6 +16,8 @@ struct Constants {
         static let settingsBackground = "settingsBackground"
         static let logout = "Shutdown"
         static let defaultUser = "defaultUser"
+        static let addButton = "Add button"
+        static let addBackground = "addpostbackground"
     }
     
     struct Colors {
