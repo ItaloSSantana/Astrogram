@@ -13,7 +13,7 @@ final class HomeController: ViewController<HomeInteracting, UIView> {
      
      private lazy var contentView: UIView = {
         let view = UIView()
-         view.backgroundColor = .red
+         view.backgroundColor = .clear
          return view
      }()
     
@@ -47,15 +47,20 @@ final class HomeController: ViewController<HomeInteracting, UIView> {
     }()
     
     private lazy var storiesCollection: UICollectionView = {
-        let collection = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
-        collection.backgroundColor = .none
-        collection.register(HomeStoriesCell.self, forCellWithReuseIdentifier: HomeStoriesCell.identifier)
-        let layout = UICollectionViewFlowLayout()
-        collection.collectionViewLayout = layout
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.itemSize = CGSize(width: 80, height: 80)
         layout.scrollDirection = .horizontal
-        collection.setCollectionViewLayout(layout, animated: true)
-        collection.showsHorizontalScrollIndicator = true
-        return collection
+        layout.minimumInteritemSpacing = 30
+        layout.minimumLineSpacing = 30
+        let collectionview = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        collectionview.showsHorizontalScrollIndicator = false
+        collectionview.dataSource = self
+        collectionview.delegate = self
+        collectionview.register(HomeStoriesCell.self, forCellWithReuseIdentifier: HomeStoriesCell.identifier)
+        collectionview.showsVerticalScrollIndicator = false
+        collectionview.backgroundColor = .clear
+        return collectionview
     }()
     
     private lazy var adjustView: UIView = {
@@ -66,60 +71,56 @@ final class HomeController: ViewController<HomeInteracting, UIView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .green
-        self.storiesCollection.delegate = self
-        self.storiesCollection.dataSource = self
         self.storiesCollection.reloadData()
     }
     
     override func buildViewHierarchy() {
-       // view.addSubview(scrollView)
-       // scrollView.addSubview(contentView)
         view.addSubview(backgroundImage)
-        view.addSubview(titleLabel)
-        view.addSubview(searchButton)
-        view.addSubview(storiesCollection)
-        view.addSubview(adjustView)
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(searchButton)
+        contentView.addSubview(storiesCollection)
+        contentView.addSubview(adjustView)
     }
     
     override func setupConstraints() {
   
-//        scrollView.snp.makeConstraints{
-//            $0.edges.equalToSuperview()
-//        }
-//
-//        contentView.snp.makeConstraints {
-//            $0.leading.trailing.equalTo(scrollView.frameLayoutGuide)
-//            $0.top.bottom.equalTo(scrollView.contentLayoutGuide)
-//        }
+        scrollView.snp.makeConstraints{
+            $0.edges.equalToSuperview()
+        }
+
+        contentView.snp.makeConstraints {
+            $0.leading.trailing.equalTo(scrollView.frameLayoutGuide)
+            $0.top.bottom.equalTo(scrollView.contentLayoutGuide)
+        }
         
         backgroundImage.snp.makeConstraints {
             $0.edges.equalTo(view)
         }
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(view.snp.top).offset(Space.base12.rawValue)
-            $0.leading.equalTo(view.snp.leading).offset(Space.base06.rawValue)
+            $0.top.equalTo(contentView.snp.top).offset(Space.base12.rawValue)
+            $0.leading.equalTo(contentView.snp.leading).offset(Space.base06.rawValue)
         }
         
         searchButton.snp.makeConstraints {
-            $0.top.equalTo(view.snp.top).offset(Space.base12.rawValue)
-            $0.trailing.equalTo(view.snp.trailing).offset(-Space.base06.rawValue)
+            $0.top.equalTo(contentView.snp.top).offset(Space.base12.rawValue)
+            $0.trailing.equalTo(contentView.snp.trailing).offset(-Space.base06.rawValue)
             $0.height.width.equalTo(46)
         }
         
         storiesCollection.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(Space.base01.rawValue)
             $0.leading.trailing.equalToSuperview()
-            //$0.width.equalTo(UIScreen.main.bounds.width)
-          //  $0.height.equalTo(70)
+            $0.height.equalTo(150)
         }
         
-//        adjustView.snp.makeConstraints {
-//            $0.top.equalTo(storiesCollection.snp.bottom).offset(Space.base02.rawValue)
-//            $0.leading.trailing.equalToSuperview()
-//            $0.bottom.equalToSuperview().offset(-Space.base02.rawValue)
-//        }
+        adjustView.snp.makeConstraints {
+            $0.top.equalTo(storiesCollection.snp.bottom).offset(Space.base02.rawValue)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(contentView).offset(-Space.base02.rawValue)
+        }
     }
 }
 
@@ -142,5 +143,4 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 //        return CGSize(width: 222, height: 222)
 //    }
-    
 }
