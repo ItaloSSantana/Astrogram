@@ -13,7 +13,7 @@ class HomeStoriesCell: UICollectionViewCell {
         let image = UIImageView()
         image.image = UIImage(named: Constants.Images.defaultUser)
         image.clipsToBounds = true
-        image.layer.cornerRadius = 45
+        image.layer.cornerRadius = 30
         image.layer.borderWidth = 3
         image.layer.borderColor = UIColor(hexaRGBA: Constants.Colors.whiteColor)?.cgColor
         image.contentMode = .scaleAspectFill
@@ -23,7 +23,7 @@ class HomeStoriesCell: UICollectionViewCell {
     private lazy var label: UILabel = {
        let label = UILabel()
         label.textColor = .white
-        label.font = .systemFont(ofSize: 14)
+        label.font = .systemFont(ofSize: 13)
         label.textAlignment = .center
         label.text = "Amigoamigo"
         return label
@@ -51,21 +51,20 @@ class HomeStoriesCell: UICollectionViewCell {
            // $0.bottom.equalToSuperview()
             //$0.trailing.equalToSuperview()
             $0.leading.equalToSuperview().offset(Space.base02.rawValue)
-            $0.height.equalTo(110)
-            $0.width.equalTo(110)
+            $0.height.equalTo(100)
+            $0.width.equalTo(100)
         }
         
         image.snp.makeConstraints {
             $0.top.equalTo(blankView.snp.top)
             $0.centerX.equalTo(blankView.snp.centerX)
-            $0.height.width.equalTo(90)
+            $0.height.width.equalTo(60)
         }
 
         label.snp.makeConstraints {
             $0.top.equalTo(image.snp.bottom).offset(Space.none.rawValue)
             $0.centerX.equalTo(blankView.snp.centerX)
             $0.width.equalTo(image.snp.width)
-            $0.bottom.equalTo(blankView.snp.bottom)
         }
     }
 }

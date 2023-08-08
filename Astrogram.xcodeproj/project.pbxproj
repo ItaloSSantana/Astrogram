@@ -15,6 +15,7 @@
 		0F11B5412A6EBB420031596D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F11B53F2A6EBB420031596D /* LaunchScreen.storyboard */; };
 		0F11B54C2A6EBB420031596D /* AstrogramTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F11B54B2A6EBB420031596D /* AstrogramTests.swift */; };
 		0F11B5572A6EBB420031596D /* AstrogramUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F11B5562A6EBB420031596D /* AstrogramUITests.swift */; };
+		0F16B7BA2A815DA6006B9DA0 /* CustomPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F16B7B92A815DA6006B9DA0 /* CustomPostView.swift */; };
 		0F18E2832A6EDDF200CE2AF2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F18E2822A6EDDF200CE2AF2 /* Constants.swift */; };
 		0F18E28B2A6EE05C00CE2AF2 /* Spaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F18E28A2A6EE05C00CE2AF2 /* Spaces.swift */; };
 		0F18E2932A6EE1FD00CE2AF2 /* CHGlassMorphismView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F18E2922A6EE1FD00CE2AF2 /* CHGlassMorphismView.swift */; };
@@ -105,6 +106,7 @@
 		0F11B5522A6EBB420031596D /* AstrogramUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AstrogramUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F11B5562A6EBB420031596D /* AstrogramUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstrogramUITests.swift; sourceTree = "<group>"; };
 		0F11B5582A6EBB420031596D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0F16B7B92A815DA6006B9DA0 /* CustomPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPostView.swift; sourceTree = "<group>"; };
 		0F18E2822A6EDDF200CE2AF2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0F18E28A2A6EE05C00CE2AF2 /* Spaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spaces.swift; sourceTree = "<group>"; };
 		0F18E2922A6EE1FD00CE2AF2 /* CHGlassMorphismView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHGlassMorphismView.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				0FDCC3162A72C5C100B67287 /* HomeCoordinator.swift */,
 				0FDCC31B2A72C5CB00B67287 /* HomeFactory.swift */,
 				0F587BEA2A7D462B0093FEC8 /* HomeStoriesCell.swift */,
+				0F16B7B92A815DA6006B9DA0 /* CustomPostView.swift */,
 			);
 			path = HomeScreen;
 			sourceTree = "<group>";
@@ -689,6 +692,7 @@
 				0F18E2982A6EE81500CE2AF2 /* TextFieldView.swift in Sources */,
 				0FC4EFDB2A797F6600E3B5E4 /* UserDataViewModel.swift in Sources */,
 				0F5658452A703FB600EA8AF9 /* RegisterFactory.swift in Sources */,
+				0F16B7BA2A815DA6006B9DA0 /* CustomPostView.swift in Sources */,
 				0F11B5342A6EBAFA0031596D /* SceneDelegate.swift in Sources */,
 				0FF9CFD42A6ECAEB00B3A7DF /* LoginCoordinator.swift in Sources */,
 				0F56583B2A703FA000EA8AF9 /* RegisterPresenter.swift in Sources */,

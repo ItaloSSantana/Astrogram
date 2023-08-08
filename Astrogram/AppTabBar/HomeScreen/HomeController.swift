@@ -51,8 +51,8 @@ final class HomeController: ViewController<HomeInteracting, UIView> {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layout.itemSize = CGSize(width: 80, height: 80)
         layout.scrollDirection = .horizontal
-        layout.minimumInteritemSpacing = 30
-        layout.minimumLineSpacing = 30
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
         let collectionview = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         collectionview.showsHorizontalScrollIndicator = false
         collectionview.dataSource = self
@@ -63,11 +63,19 @@ final class HomeController: ViewController<HomeInteracting, UIView> {
         return collectionview
     }()
     
-    private lazy var adjustView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .red
-        return view
+    
+    private lazy var verticalStack: UIStackView = {
+        let stack = UIStackView()
+        stack.spacing = 13
+        stack.distribution = .equalSpacing
+        stack.alignment = .fill
+        stack.axis = .vertical
+        stack.backgroundColor = .clear
+        return stack
     }()
+    
+    private var adjustView = CustomPostView()
+    private lazy var adjustView2 = CustomPostView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,7 +89,9 @@ final class HomeController: ViewController<HomeInteracting, UIView> {
         contentView.addSubview(titleLabel)
         contentView.addSubview(searchButton)
         contentView.addSubview(storiesCollection)
-        contentView.addSubview(adjustView)
+        contentView.addSubview(verticalStack)
+        verticalStack.addArrangedSubview(adjustView)
+        verticalStack.addArrangedSubview(adjustView2)
     }
     
     override func setupConstraints() {
@@ -91,8 +101,10 @@ final class HomeController: ViewController<HomeInteracting, UIView> {
         }
 
         contentView.snp.makeConstraints {
-            $0.leading.trailing.equalTo(scrollView.frameLayoutGuide)
-            $0.top.bottom.equalTo(scrollView.contentLayoutGuide)
+            $0.height.greaterThanOrEqualTo(view.safeAreaLayoutGuide.snp.height)
+            $0.edges.width.equalToSuperview()
+//            $0.leading.trailing.equalTo(scrollView.frameLayoutGuide)
+//            $0.top.bottom.equalTo(scrollView.contentLayoutGuide)
         }
         
         backgroundImage.snp.makeConstraints {
@@ -100,26 +112,26 @@ final class HomeController: ViewController<HomeInteracting, UIView> {
         }
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(contentView.snp.top).offset(Space.base12.rawValue)
+            $0.top.equalTo(contentView.snp.top).offset(Space.base05.rawValue)
             $0.leading.equalTo(contentView.snp.leading).offset(Space.base06.rawValue)
         }
         
         searchButton.snp.makeConstraints {
-            $0.top.equalTo(contentView.snp.top).offset(Space.base12.rawValue)
+            $0.top.equalTo(contentView.snp.top).offset(Space.base05.rawValue)
             $0.trailing.equalTo(contentView.snp.trailing).offset(-Space.base06.rawValue)
             $0.height.width.equalTo(46)
         }
         
         storiesCollection.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(Space.base01.rawValue)
+            $0.top.equalTo(searchButton.snp.bottom).offset(Space.base01.rawValue)
             $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(150)
+            $0.height.equalTo(100)
         }
         
-        adjustView.snp.makeConstraints {
+        verticalStack.snp.makeConstraints {
             $0.top.equalTo(storiesCollection.snp.bottom).offset(Space.base02.rawValue)
-            $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(contentView).offset(-Space.base02.rawValue)
+            $0.leading.trailing.equalToSuperview().inset(Space.base03.rawValue)
+            $0.bottom.equalToSuperview().offset(-Space.base02.rawValue)
         }
     }
 }
@@ -132,7 +144,7 @@ extension HomeController: HomeDisplaying {
 
 extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 8
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
