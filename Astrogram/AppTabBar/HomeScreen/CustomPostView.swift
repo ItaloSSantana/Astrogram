@@ -135,4 +135,11 @@ class CustomPostView: UIView {
             $0.trailing.equalToSuperview().offset(-Space.base05.rawValue)
         }
     }
+    
+    func setupView(post: PostViewModel) {
+        postImage.kf.setImage(with: URL(string: post.imageURL))
+        textLabel.text = post.text
+        print(post.text)
+    }
+    
 }

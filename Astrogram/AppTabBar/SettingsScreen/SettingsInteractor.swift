@@ -16,7 +16,6 @@ final class SettingsInteractor: SettingsInteracting {
     let authView = AuthenticationViewModel()
     
     private var auth: Auth?
-    private var userID = ""
     private var db: Firestore?
     private var storage: Storage?
     private var listener: ListenerRegistration?
@@ -26,15 +25,13 @@ final class SettingsInteractor: SettingsInteracting {
         auth = Auth.auth()
         db = Firestore.firestore()
         storage = Storage.storage()
-        
-        if let id = auth?.currentUser?.uid {
-            userID = id
-        }
     }
     
     func loadData() {
+        guard let userID = auth?.currentUser?.uid else { return }
         let userRef = db?.collection("users").document(userID)
         listener = userRef?.addSnapshotListener({ (snapshot, error) in
+            print(error?.localizedDescription)
             guard let safeData = snapshot?.data(),
                   let safeName = safeData["name"] as? String,
                   let safeNick = safeData["nickName"] as? String,

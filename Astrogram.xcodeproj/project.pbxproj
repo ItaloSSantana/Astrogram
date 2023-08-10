@@ -29,6 +29,7 @@
 		0F5658402A703FAB00EA8AF9 /* RegisterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F56583F2A703FAB00EA8AF9 /* RegisterCoordinator.swift */; };
 		0F5658452A703FB600EA8AF9 /* RegisterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5658442A703FB600EA8AF9 /* RegisterFactory.swift */; };
 		0F587BEB2A7D462B0093FEC8 /* HomeStoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F587BEA2A7D462B0093FEC8 /* HomeStoriesCell.swift */; };
+		0F588D302A8524DB007488FB /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F588D2F2A8524DB007488FB /* PostViewModel.swift */; };
 		0F82D7992A6F2F8100E2C364 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F82D7982A6F2F8100E2C364 /* CustomButtonView.swift */; };
 		0FC4EFDB2A797F6600E3B5E4 /* UserDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC4EFDA2A797F6600E3B5E4 /* UserDataViewModel.swift */; };
 		0FDCC3082A72C59F00B67287 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCC3072A72C59F00B67287 /* HomeController.swift */; };
@@ -120,6 +121,7 @@
 		0F56583F2A703FAB00EA8AF9 /* RegisterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCoordinator.swift; sourceTree = "<group>"; };
 		0F5658442A703FB600EA8AF9 /* RegisterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterFactory.swift; sourceTree = "<group>"; };
 		0F587BEA2A7D462B0093FEC8 /* HomeStoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStoriesCell.swift; sourceTree = "<group>"; };
+		0F588D2F2A8524DB007488FB /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		0F82D7982A6F2F8100E2C364 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 		0FC4EFDA2A797F6600E3B5E4 /* UserDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataViewModel.swift; sourceTree = "<group>"; };
 		0FDCC3072A72C59F00B67287 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				0FC4EFDA2A797F6600E3B5E4 /* UserDataViewModel.swift */,
+				0F588D2F2A8524DB007488FB /* PostViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -704,6 +707,7 @@
 				0FDCC34B2A72E0B000B67287 /* AddPostFactory.swift in Sources */,
 				0FFB1DF32A780F2A00E958AF /* EditProfileCoordinator.swift in Sources */,
 				0FFB1DF22A780F2A00E958AF /* EditProfileController.swift in Sources */,
+				0F588D302A8524DB007488FB /* PostViewModel.swift in Sources */,
 				0FFB1DF52A780F2A00E958AF /* EditProfileInteractor.swift in Sources */,
 				0FDCC34D2A72E0B000B67287 /* AddPostPresenter.swift in Sources */,
 				0F18E29D2A6EE84B00CE2AF2 /* Hexadecimals.swift in Sources */,

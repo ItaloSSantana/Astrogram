@@ -1,30 +1,31 @@
 import UIKit
 
 protocol HomeDisplaying: AnyObject {
-    func doSomething()
+    func displayPosts(posts: [PostViewModel])
 }
 
 final class HomeController: ViewController<HomeInteracting, UIView> {
     private lazy var scrollView: UIScrollView = {
-         let scroll = UIScrollView()
-         scroll.backgroundColor = .clear
-         return scroll
-     }()
-     
-     private lazy var contentView: UIView = {
+        let scroll = UIScrollView()
+        scroll.backgroundColor = .clear
+        scroll.showsVerticalScrollIndicator = false
+        return scroll
+    }()
+    
+    private lazy var contentView: UIView = {
         let view = UIView()
-         view.backgroundColor = .clear
-         return view
-     }()
+        view.backgroundColor = .clear
+        return view
+    }()
     
     private lazy var backgroundImage: UIImageView = {
-      let image = UIImageView()
+        let image = UIImageView()
         image.image = UIImage(named: Constants.Images.settingsBackground)
         return image
     }()
     
     private lazy var titleLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.text = "AstroGram"
         label.numberOfLines = 1
         label.textColor = .white
@@ -62,8 +63,7 @@ final class HomeController: ViewController<HomeInteracting, UIView> {
         collectionview.backgroundColor = .clear
         return collectionview
     }()
-    
-    
+     
     private lazy var verticalStack: UIStackView = {
         let stack = UIStackView()
         stack.spacing = 13
@@ -73,13 +73,13 @@ final class HomeController: ViewController<HomeInteracting, UIView> {
         stack.backgroundColor = .clear
         return stack
     }()
-    
-    private var adjustView = CustomPostView()
-    private lazy var adjustView2 = CustomPostView()
+        
+    private var postList: [PostViewModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.storiesCollection.reloadData()
+        interactor.loadData()
     }
     
     override func buildViewHierarchy() {
@@ -90,21 +90,17 @@ final class HomeController: ViewController<HomeInteracting, UIView> {
         contentView.addSubview(searchButton)
         contentView.addSubview(storiesCollection)
         contentView.addSubview(verticalStack)
-        verticalStack.addArrangedSubview(adjustView)
-        verticalStack.addArrangedSubview(adjustView2)
     }
     
     override func setupConstraints() {
-  
+        
         scrollView.snp.makeConstraints{
             $0.edges.equalToSuperview()
         }
-
+        
         contentView.snp.makeConstraints {
             $0.height.greaterThanOrEqualTo(view.safeAreaLayoutGuide.snp.height)
             $0.edges.width.equalToSuperview()
-//            $0.leading.trailing.equalTo(scrollView.frameLayoutGuide)
-//            $0.top.bottom.equalTo(scrollView.contentLayoutGuide)
         }
         
         backgroundImage.snp.makeConstraints {
@@ -112,12 +108,12 @@ final class HomeController: ViewController<HomeInteracting, UIView> {
         }
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(contentView.snp.top).offset(Space.base05.rawValue)
+            $0.top.equalTo(contentView.snp.top).offset(Space.base02.rawValue)
             $0.leading.equalTo(contentView.snp.leading).offset(Space.base06.rawValue)
         }
         
         searchButton.snp.makeConstraints {
-            $0.top.equalTo(contentView.snp.top).offset(Space.base05.rawValue)
+            $0.top.equalTo(contentView.snp.top).offset(Space.base02.rawValue)
             $0.trailing.equalTo(contentView.snp.trailing).offset(-Space.base06.rawValue)
             $0.height.width.equalTo(46)
         }
@@ -137,8 +133,13 @@ final class HomeController: ViewController<HomeInteracting, UIView> {
 }
 
 extension HomeController: HomeDisplaying {
-    func doSomething() {
-        //
+    func displayPosts(posts: [PostViewModel]) {
+        print(posts.count)
+        posts.forEach { (post) in
+            let postCard = CustomPostView()
+            postCard.setupView(post: post)
+            verticalStack.addArrangedSubview(postCard)
+        }
     }
 }
 
@@ -151,8 +152,4 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeStoriesCell.identifier, for: indexPath) as? HomeStoriesCell else {return UICollectionViewCell()}
         return cell
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: 222, height: 222)
-//    }
 }

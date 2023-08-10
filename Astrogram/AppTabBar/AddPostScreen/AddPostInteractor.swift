@@ -48,9 +48,8 @@ final class AddPostInteractor: AddPostInteracting {
                 profileImageRef.downloadURL { url, error in
                     guard let imageUrl = url?.absoluteString else {return}
                     self.db?.collection("posts")
-                        .document(userID)
-                        .collection("userPosts")
-                        .addDocument(data: ["imageURL": imageUrl, "text": text])
+                        .addDocument(data: ["userID": userID, "imageURL": imageUrl, "text": text, "date": FieldValue.serverTimestamp()])
+                        
                 }
             }
         })
