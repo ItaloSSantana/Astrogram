@@ -67,7 +67,7 @@ final class HomeInteractor: HomeInteracting {
                     print("here demais")
                     control += 1
                     
-                    if control >= self.posts.count - 1 {
+                    if control == self.posts.count - 1 {
                         print(control)
                         print("proximo contrl")
                         self.loadPostUserData { (result) in
@@ -95,7 +95,8 @@ final class HomeInteractor: HomeInteracting {
                         self.showPosts.append(PostViewModel(text: post.text, imageURL: post.imageURL, userID: post.userID, userImage: safeImage))
                     }
                     control += 1
-                    if control >= self.followingPosts.count - 1 {
+                    if control == self.followingPosts.count - 1 {
+                        print(self.showPosts.count)
                         completionHandler(true)
                     }
                 })
