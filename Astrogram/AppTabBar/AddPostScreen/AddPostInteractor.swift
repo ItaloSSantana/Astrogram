@@ -39,9 +39,7 @@ final class AddPostInteractor: AddPostInteracting {
         guard let userID = auth?.currentUser?.uid else {return}
         let uniqueID = UUID().uuidString
         let imageName = ("\(uniqueID).jpg")
-        guard let profileImageRef = images?.child("posts").child(imageName) else {
-            print("here")
-            return}
+        guard let profileImageRef = images?.child("posts").child(imageName) else { return }
         
         profileImageRef.putData(uploadImage, metadata: nil, completion: { (metaData, error) in
             if error == nil {

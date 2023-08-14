@@ -139,6 +139,7 @@ class CustomPostView: UIView {
     func setupView(post: PostViewModel) {
         postImage.kf.setImage(with: URL(string: post.imageURL))
         textLabel.text = post.text
+        userImage.kf.setImage(with: URL(string: post.userImage))
         print(post.text)
     }
     
