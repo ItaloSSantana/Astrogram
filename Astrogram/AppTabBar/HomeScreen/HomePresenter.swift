@@ -1,7 +1,7 @@
 import Foundation
 
 protocol HomePresenting: AnyObject {
-    func displayScreen()
+    func displayScreen(posts: [PostViewModel])
 }
 
 final class HomePresenter: HomePresenting {
@@ -12,8 +12,8 @@ final class HomePresenter: HomePresenting {
         self.coordinator = coordinator
     }
     
-    func displayScreen() {
-        viewController?.doSomething()
+    func displayScreen(posts: [PostViewModel]) {
+        viewController?.displayPosts(posts: posts)
     }
     
     func performAction() {

@@ -7,7 +7,6 @@ protocol LoginDisplaying: AnyObject {
 }
 
 class LoginController: ViewController<LoginInteracting, UIView> {
-    
     private lazy var backgroundImage: UIImageView = {
       let image = UIImageView()
         image.image = UIImage(named: Constants.Images.backgroundLogin)

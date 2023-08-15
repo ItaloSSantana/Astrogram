@@ -5,6 +5,8 @@ struct Constants {
         static let appLogo = "AstroGramLogo"
         static let backgroundLogin = "BackgroundLogin"
         static let backgroundRegister = "BackgroundRegister"
+        static let addBackground = "addpostbackground"
+        static let settingsBackground = "settingsBackground"
         static let googleLogo = "googleLogo"
         static let checked = "Done"
         static let backIcon = "return"
@@ -13,11 +15,13 @@ struct Constants {
         static let add = "Add"
         static let messages = "messages"
         static let settings = "Settings"
-        static let settingsBackground = "settingsBackground"
         static let logout = "Shutdown"
         static let defaultUser = "defaultUser"
         static let addButton = "Add button"
-        static let addBackground = "addpostbackground"
+        static let starIcon = "Star"
+        static let commentIcon = "Typing"
+        static let bookmarkIcon = "Bookmark"
+        static let searchIcon = "Search"
     }
     
     struct Colors {

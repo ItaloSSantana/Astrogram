@@ -39,18 +39,15 @@ final class AddPostInteractor: AddPostInteracting {
         guard let userID = auth?.currentUser?.uid else {return}
         let uniqueID = UUID().uuidString
         let imageName = ("\(uniqueID).jpg")
-        guard let profileImageRef = images?.child("posts").child(imageName) else {
-            print("here")
-            return}
+        guard let profileImageRef = images?.child("posts").child(imageName) else { return }
         
         profileImageRef.putData(uploadImage, metadata: nil, completion: { (metaData, error) in
             if error == nil {
                 profileImageRef.downloadURL { url, error in
                     guard let imageUrl = url?.absoluteString else {return}
                     self.db?.collection("posts")
-                        .document(userID)
-                        .collection("userPosts")
-                        .addDocument(data: ["imageURL": imageUrl, "text": text])
+                        .addDocument(data: ["userID": userID, "imageURL": imageUrl, "text": text, "date": FieldValue.serverTimestamp()])
+                        
                 }
             }
         })
