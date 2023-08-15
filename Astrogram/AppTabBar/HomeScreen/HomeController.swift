@@ -44,6 +44,9 @@ final class HomeController: ViewController<HomeInteracting, UIView> {
                                     radius: 23,
                                     color: Constants.Colors.darkColor,
                                     shadow: Constants.Colors.darkColor)
+        button.action = {
+            self.searchPressed()
+        }
         return button
     }()
     
@@ -129,6 +132,10 @@ final class HomeController: ViewController<HomeInteracting, UIView> {
             $0.leading.trailing.equalToSuperview().inset(Space.base03.rawValue)
             $0.bottom.equalToSuperview().offset(-Space.base02.rawValue)
         }
+    }
+    
+    @objc private func searchPressed() {
+        interactor.searchPressed()
     }
 }
 

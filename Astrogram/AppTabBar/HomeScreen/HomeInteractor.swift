@@ -6,7 +6,7 @@ import FirebaseStorage
 
 protocol HomeInteracting: AnyObject {
     func loadData()
-    func continueFlow()
+    func searchPressed()
 }
 
 final class HomeInteractor: HomeInteracting {
@@ -103,7 +103,7 @@ final class HomeInteractor: HomeInteracting {
         }
     }
     
-    func continueFlow() {
-        // :- NEXT PR
+    func searchPressed() {
+        presenter.searchPressed()
     }
 }

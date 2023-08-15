@@ -1,12 +1,12 @@
 import UIKit
 
 protocol HomeDelegate {
-    func continueFlow()
+    func searchPressed()
 }
 
 protocol HomeCoordinating: AnyObject {
     var viewController: UIViewController? {get set}
-    func continueFlow()
+    func searchPressed()
 }
 
 final class HomeCoordinator: HomeCoordinating {
@@ -17,7 +17,7 @@ final class HomeCoordinator: HomeCoordinating {
         self.delegate = delegate
     }
     
-    func continueFlow() {
-        // :- NEXT PR
+    func searchPressed() {
+        delegate.searchPressed()
     }
 }

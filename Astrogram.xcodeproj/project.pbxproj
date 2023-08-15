@@ -58,6 +58,12 @@
 		0FDCC3772A72E5E200B67287 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCC3722A72E5E100B67287 /* SettingsPresenter.swift */; };
 		0FDCC3782A72E5E200B67287 /* SettingsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCC3732A72E5E200B67287 /* SettingsFactory.swift */; };
 		0FDCC3812A72F59400B67287 /* AppTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCC3802A72F59400B67287 /* AppTabBar.swift */; };
+		0FE60E802A8BF01500C79A66 /* SearchFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE60E7B2A8BF01500C79A66 /* SearchFactory.swift */; };
+		0FE60E812A8BF01500C79A66 /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE60E7C2A8BF01500C79A66 /* SearchInteractor.swift */; };
+		0FE60E822A8BF01500C79A66 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE60E7D2A8BF01500C79A66 /* SearchPresenter.swift */; };
+		0FE60E832A8BF01500C79A66 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE60E7E2A8BF01500C79A66 /* SearchController.swift */; };
+		0FE60E842A8BF01500C79A66 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE60E7F2A8BF01500C79A66 /* SearchCoordinator.swift */; };
+		0FE60E8C2A8C049100C79A66 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE60E8B2A8C049100C79A66 /* SearchCell.swift */; };
 		0FF9CF932A6EC60E00B3A7DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0FF9CF922A6EC60E00B3A7DF /* GoogleService-Info.plist */; };
 		0FF9CFBE2A6EC96E00B3A7DF /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF9CFBD2A6EC96E00B3A7DF /* LoginController.swift */; };
 		0FF9CFCA2A6EC9E500B3A7DF /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF9CFC92A6EC9E500B3A7DF /* LoginInteractor.swift */; };
@@ -150,6 +156,12 @@
 		0FDCC3722A72E5E100B67287 /* SettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		0FDCC3732A72E5E200B67287 /* SettingsFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsFactory.swift; sourceTree = "<group>"; };
 		0FDCC3802A72F59400B67287 /* AppTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBar.swift; sourceTree = "<group>"; };
+		0FE60E7B2A8BF01500C79A66 /* SearchFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFactory.swift; sourceTree = "<group>"; };
+		0FE60E7C2A8BF01500C79A66 /* SearchInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
+		0FE60E7D2A8BF01500C79A66 /* SearchPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
+		0FE60E7E2A8BF01500C79A66 /* SearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		0FE60E7F2A8BF01500C79A66 /* SearchCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
+		0FE60E8B2A8C049100C79A66 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		0FF9CF922A6EC60E00B3A7DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0FF9CFBD2A6EC96E00B3A7DF /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		0FF9CFC92A6EC9E500B3A7DF /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
@@ -287,6 +299,7 @@
 				0FDCC31B2A72C5CB00B67287 /* HomeFactory.swift */,
 				0F587BEA2A7D462B0093FEC8 /* HomeStoriesCell.swift */,
 				0F16B7B92A815DA6006B9DA0 /* CustomPostView.swift */,
+				0FE60E7A2A8BEFA300C79A66 /* SearchScreen */,
 			);
 			path = HomeScreen;
 			sourceTree = "<group>";
@@ -372,6 +385,19 @@
 				0FDCC36E2A72E54B00B67287 /* SettingsScreen */,
 			);
 			path = AppTabBar;
+			sourceTree = "<group>";
+		};
+		0FE60E7A2A8BEFA300C79A66 /* SearchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				0FE60E7E2A8BF01500C79A66 /* SearchController.swift */,
+				0FE60E7C2A8BF01500C79A66 /* SearchInteractor.swift */,
+				0FE60E7D2A8BF01500C79A66 /* SearchPresenter.swift */,
+				0FE60E7F2A8BF01500C79A66 /* SearchCoordinator.swift */,
+				0FE60E7B2A8BF01500C79A66 /* SearchFactory.swift */,
+				0FE60E8B2A8C049100C79A66 /* SearchCell.swift */,
+			);
+			path = SearchScreen;
 			sourceTree = "<group>";
 		};
 		0FF9CFC22A6EC97300B3A7DF /* LoginScreen */ = {
@@ -660,6 +686,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FDCC3812A72F59400B67287 /* AppTabBar.swift in Sources */,
+				0FE60E8C2A8C049100C79A66 /* SearchCell.swift in Sources */,
 				0F11B5362A6EBAFA0031596D /* ViewController.swift in Sources */,
 				0F82D7992A6F2F8100E2C364 /* CustomButtonView.swift in Sources */,
 				0FDCC3672A72E41300B67287 /* MessagesController.swift in Sources */,
@@ -672,10 +699,12 @@
 				0FDCC3752A72E5E200B67287 /* SettingsInteractor.swift in Sources */,
 				0FDCC3772A72E5E200B67287 /* SettingsPresenter.swift in Sources */,
 				0FF9CFCF2A6ECA7A00B3A7DF /* LoginPresenter.swift in Sources */,
+				0FE60E842A8BF01500C79A66 /* SearchCoordinator.swift in Sources */,
 				0F5658362A703F9500EA8AF9 /* RegisterInteractor.swift in Sources */,
 				0FDCC3762A72E5E200B67287 /* SettingsCoordinator.swift in Sources */,
 				0FDCC34A2A72E0B000B67287 /* AddPostCoordinator.swift in Sources */,
 				0FDCC3642A72E41300B67287 /* MessagesPresenter.swift in Sources */,
+				0FE60E822A8BF01500C79A66 /* SearchPresenter.swift in Sources */,
 				0F18E2C82A6F10F900CE2AF2 /* AuthenticationViewModel.swift in Sources */,
 				0FF9CFFB2A6ECD3000B3A7DF /* MainFlowCoordinator.swift in Sources */,
 				0FDCC3632A72E41300B67287 /* MessagesInteractor.swift in Sources */,
@@ -686,6 +715,7 @@
 				0FDCC31C2A72C5CB00B67287 /* HomeFactory.swift in Sources */,
 				0FDCC3262A72DE7D00B67287 /* ProfileInteractor.swift in Sources */,
 				0FDCC3122A72C5B200B67287 /* HomePresenter.swift in Sources */,
+				0FE60E802A8BF01500C79A66 /* SearchFactory.swift in Sources */,
 				0FF9CFCA2A6EC9E500B3A7DF /* LoginInteractor.swift in Sources */,
 				0FDCC3782A72E5E200B67287 /* SettingsFactory.swift in Sources */,
 				0FDCC3652A72E41300B67287 /* MessagesFactory.swift in Sources */,
@@ -706,12 +736,14 @@
 				0F5658402A703FAB00EA8AF9 /* RegisterCoordinator.swift in Sources */,
 				0FDCC34B2A72E0B000B67287 /* AddPostFactory.swift in Sources */,
 				0FFB1DF32A780F2A00E958AF /* EditProfileCoordinator.swift in Sources */,
+				0FE60E832A8BF01500C79A66 /* SearchController.swift in Sources */,
 				0FFB1DF22A780F2A00E958AF /* EditProfileController.swift in Sources */,
 				0F588D302A8524DB007488FB /* PostViewModel.swift in Sources */,
 				0FFB1DF52A780F2A00E958AF /* EditProfileInteractor.swift in Sources */,
 				0FDCC34D2A72E0B000B67287 /* AddPostPresenter.swift in Sources */,
 				0F18E29D2A6EE84B00CE2AF2 /* Hexadecimals.swift in Sources */,
 				0FDCC3082A72C59F00B67287 /* HomeController.swift in Sources */,
+				0FE60E812A8BF01500C79A66 /* SearchInteractor.swift in Sources */,
 				0FDCC3282A72DE7D00B67287 /* ProfileCoordinator.swift in Sources */,
 				0FDCC3292A72DE7D00B67287 /* ProfileController.swift in Sources */,
 				0F537EF62A71655300806F22 /* CDefaultButton.swift in Sources */,
