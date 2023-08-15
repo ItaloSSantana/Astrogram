@@ -40,7 +40,7 @@ final class SearchController: ViewController<SearchInteracting, UIView> {
     lazy var usersTableView: UITableView = {
         let tableView = UITableView()
         tableView.rowHeight = 80
-       // tableView.register(ContactsCell.self, forCellReuseIdentifier: ContactsCell.identifier)
+        tableView.register(SearchCell.self, forCellReuseIdentifier: SearchCell.identifier)
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
         return tableView
@@ -48,6 +48,8 @@ final class SearchController: ViewController<SearchInteracting, UIView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        usersTableView.delegate = self
+        usersTableView.dataSource = self
         view.backgroundColor = .blue
     }
     
@@ -95,11 +97,12 @@ extension SearchController: UISearchBarDelegate {
 
 extension SearchController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchCell.identifier, for: indexPath) as? SearchCell else { return UITableViewCell() }
+        return cell
     }
     
     

@@ -156,7 +156,7 @@ extension HomeController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeStoriesCell.identifier, for: indexPath) as? HomeStoriesCell else {return UICollectionViewCell()}
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeStoriesCell.identifier, for: indexPath) as? HomeStoriesCell else { return UICollectionViewCell() }
         return cell
     }
 }
