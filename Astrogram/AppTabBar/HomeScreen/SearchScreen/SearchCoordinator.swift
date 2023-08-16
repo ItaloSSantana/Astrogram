@@ -1,12 +1,12 @@
 import UIKit
 
 protocol SearchDelegate {
-    func continueFlow()
+    func returnClicked()
 }
 
 protocol SearchCoordinating: AnyObject {
     var viewController: UIViewController? {get set}
-    func continueFlow()
+    func returnPressed()
 }
 
 final class SearchCoordinator: SearchCoordinating {
@@ -17,7 +17,7 @@ final class SearchCoordinator: SearchCoordinating {
         self.delegate = delegate
     }
     
-    func continueFlow() {
-        // :- NEXT PR
+    func returnPressed() {
+        delegate.returnClicked()
     }
 }

@@ -1,7 +1,7 @@
 import UIKit
 
 protocol SearchDisplaying: AnyObject {
-    func doSomething()
+    func usersLoaded(users: [UserDataViewModel])
 }
 
 final class SearchController: ViewController<SearchInteracting, UIView> {
@@ -17,7 +17,9 @@ final class SearchController: ViewController<SearchInteracting, UIView> {
                                     radius: 23,
                                     color: Constants.Colors.darkColor,
                                     shadow: Constants.Colors.darkColor)
-    
+        button.action = {
+            self.returnPressed()
+        }
         return button
     }()
     
@@ -39,12 +41,20 @@ final class SearchController: ViewController<SearchInteracting, UIView> {
     
     lazy var usersTableView: UITableView = {
         let tableView = UITableView()
-        tableView.rowHeight = 80
+        tableView.rowHeight = 100
         tableView.register(SearchCell.self, forCellReuseIdentifier: SearchCell.identifier)
-        tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .clear
         return tableView
     }()
+    
+    private var usersList: [UserDataViewModel] = []
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        interactor.loadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,11 +93,18 @@ final class SearchController: ViewController<SearchInteracting, UIView> {
             $0.bottom.equalToSuperview()
         }
     }
+    
+    @objc private func returnPressed() {
+        interactor.returnPressed()
+    }
+    
 }
 
 extension SearchController: SearchDisplaying {
-    func doSomething() {
-        //
+    func usersLoaded(users: [UserDataViewModel]) {
+        usersList = users
+        print(usersList.count)
+        usersTableView.reloadData()
     }
 }
 
@@ -97,13 +114,13 @@ extension SearchController: UISearchBarDelegate {
 
 extension SearchController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return usersList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchCell.identifier, for: indexPath) as? SearchCell else { return UITableViewCell() }
+        let user = usersList[indexPath.row]
+        cell.setupCell(user: user)
         return cell
     }
-    
-    
 }

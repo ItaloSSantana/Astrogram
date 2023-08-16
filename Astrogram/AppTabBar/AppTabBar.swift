@@ -85,13 +85,15 @@ extension AppTabBar: HomeDelegate {
 }
 
 extension AppTabBar: SearchDelegate {
-    func continueFlow() {
-        //
+    func returnClicked() {
+        navigationController?.popViewController(animated: true)
     }
 }
 
 extension AppTabBar: ProfileDelegate {
-    
+    func continueFlow() {
+        //
+    }
 }
 
 extension AppTabBar: AddPostDelegate {

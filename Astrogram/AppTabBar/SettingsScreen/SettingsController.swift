@@ -151,6 +151,5 @@ extension SettingsController: SettingsDisplaying {
         nameLabel.text = data.name
         nickLabel.text = "@\(data.nick)"
         userImage.kf.setImage(with: URL(string: data.image))
-        
     }
 }

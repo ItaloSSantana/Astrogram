@@ -141,7 +141,6 @@ final class HomeController: ViewController<HomeInteracting, UIView> {
 
 extension HomeController: HomeDisplaying {
     func displayPosts(posts: [PostViewModel]) {
-        print(posts.count)
         posts.forEach { (post) in
             let postCard = CustomPostView()
             postCard.setupView(post: post)

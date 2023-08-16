@@ -1,7 +1,8 @@
 import Foundation
 
 protocol SearchPresenting: AnyObject {
-    func displayScreen()
+    func displayScreen(users: [UserDataViewModel])
+    func returnPressed()
 }
 
 final class SearchPresenter: SearchPresenting {
@@ -12,11 +13,11 @@ final class SearchPresenter: SearchPresenting {
         self.coordinator = coordinator
     }
     
-    func displayScreen() {
-        viewController?.doSomething()
+    func displayScreen(users: [UserDataViewModel]) {
+        viewController?.usersLoaded(users: users)
     }
     
-    func performAction() {
-        // :- NEXT PR
+    func returnPressed() {
+        coordinator.returnPressed()
     }
 }
