@@ -7,6 +7,8 @@ import FirebaseStorage
 protocol SearchInteracting: AnyObject {
     func loadData()
     func returnPressed()
+    func searchPressed(text: String)
+    func removeListener()
 }
 
 final class SearchInteractor: SearchInteracting {
@@ -17,6 +19,7 @@ final class SearchInteractor: SearchInteracting {
     private var db: Firestore?
     private var storage: Storage?
     private var userList: [UserDataViewModel] = []
+    private var messageListener: ListenerRegistration?
     
     init(presenter: SearchPresenting) {
         self.presenter = presenter
@@ -26,8 +29,9 @@ final class SearchInteractor: SearchInteracting {
     }
     
     func loadData() {
-        let usersRef = db?.collection("users").getDocuments(completion: { (snapshot, error) in
+        let usersRef = db?.collection("users").addSnapshotListener({ (snapshot, error) in
             guard let safeSnap = snapshot?.documents else { return }
+            self.userList.removeAll()
             safeSnap.forEach { (document) in
                 guard let safeName = document["name"] as? String,
                       let safeNick = document["nickName"] as? String,
@@ -39,7 +43,23 @@ final class SearchInteractor: SearchInteracting {
         })
     }
     
+    func searchPressed(text: String) {
+           let filterList = userList
+           self.userList.removeAll()
+           filterList.forEach { (item) in
+               if item.name.lowercased().contains(text.lowercased()) {
+                   self.userList.append(item)
+               }
+           }
+        
+        self.presenter.displayScreen(users: self.userList)
+       }
+    
     func returnPressed() {
         presenter.returnPressed()
     }
+    
+    func removeListener() {
+            messageListener?.remove()
+        }
 }

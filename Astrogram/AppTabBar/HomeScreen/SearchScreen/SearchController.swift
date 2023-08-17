@@ -63,6 +63,11 @@ final class SearchController: ViewController<SearchInteracting, UIView> {
         view.backgroundColor = .blue
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        interactor.removeListener()
+    }
+    
     override func buildViewHierarchy() {
         view.addSubview(backgroundImage)
         view.addSubview(returnButton)
@@ -109,7 +114,21 @@ extension SearchController: SearchDisplaying {
 }
 
 extension SearchController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text == "" {
+            interactor.loadData()
+            usersTableView.reloadData()
+        }
+    }
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let resultText = searchBar.text {
+            if resultText != "" {
+                interactor.searchPressed(text: resultText)
+                usersTableView.reloadData()
+            }
+        }
+    }
 }
 
 extension SearchController: UITableViewDelegate, UITableViewDataSource {
