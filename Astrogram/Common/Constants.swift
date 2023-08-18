@@ -22,6 +22,7 @@ struct Constants {
         static let commentIcon = "Typing"
         static let bookmarkIcon = "Bookmark"
         static let searchIcon = "Search"
+        static let line = "line"
     }
     
     struct Colors {
