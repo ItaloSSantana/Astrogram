@@ -6,7 +6,7 @@ import FirebaseStorage
 
 protocol HomeInteracting: AnyObject {
     func loadData()
-    func continueFlow()
+    func searchPressed()
 }
 
 final class HomeInteractor: HomeInteracting {
@@ -64,12 +64,9 @@ final class HomeInteractor: HomeInteracting {
                     if let safeDoc = document, safeDoc.exists {
                         self.followingPosts.append(post)
                     }
-                    print("here demais")
                     control += 1
                     
                     if control == self.posts.count - 1 {
-                        print(control)
-                        print("proximo contrl")
                         self.loadPostUserData { (result) in
                             if result {
                                 completionHandler(true)
@@ -82,7 +79,6 @@ final class HomeInteractor: HomeInteracting {
     
     private func loadPostUserData(completionHandler:@escaping (Bool) -> ()) {
         var control = 0
-        print(control)
         followingPosts.forEach { (post) in
             db?.collection("users")
                 .document(post.userID)
@@ -103,7 +99,7 @@ final class HomeInteractor: HomeInteracting {
         }
     }
     
-    func continueFlow() {
-        // :- NEXT PR
+    func searchPressed() {
+        presenter.searchPressed()
     }
 }

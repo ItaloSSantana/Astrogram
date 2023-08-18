@@ -2,6 +2,7 @@ import Foundation
 
 protocol HomePresenting: AnyObject {
     func displayScreen(posts: [PostViewModel])
+    func searchPressed()
 }
 
 final class HomePresenter: HomePresenting {
@@ -16,7 +17,7 @@ final class HomePresenter: HomePresenting {
         viewController?.displayPosts(posts: posts)
     }
     
-    func performAction() {
-        // :- NEXT PR
+    func searchPressed() {
+        coordinator.searchPressed()
     }
 }

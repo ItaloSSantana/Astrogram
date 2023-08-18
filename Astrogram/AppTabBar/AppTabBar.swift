@@ -78,13 +78,22 @@ class AppTabBar: UITabBarController {
 }
 
 extension AppTabBar: HomeDelegate {
-    func continueFlow() {
-        //
+    func searchPressed() {
+        let searchController = SearchFactory.make(delegate: self)
+        navigationController?.pushViewController(searchController, animated: true)
+    }
+}
+
+extension AppTabBar: SearchDelegate {
+    func returnClicked() {
+        navigationController?.popViewController(animated: true)
     }
 }
 
 extension AppTabBar: ProfileDelegate {
-    
+    func continueFlow() {
+        //
+    }
 }
 
 extension AppTabBar: AddPostDelegate {
