@@ -95,6 +95,45 @@ final class ProfileController: ViewController<ProfileInteracting, UIView> {
         return stack
     }()
     
+    private lazy var followButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = UIColor(hexaRGBA: Constants.Colors.yellowColor)
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 10
+        button.setTitle("Seguir", for: .normal)
+        button.titleLabel?.tintColor = .white
+        button.titleLabel?.font = .systemFont(ofSize: 20)
+        return button
+    }()
+    
+    private lazy var messageButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = UIColor(hexaRGBA: Constants.Colors.yellowColor)
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 10
+        button.setTitle("Mensagens", for: .normal)
+        button.titleLabel?.tintColor = .white
+        button.titleLabel?.font = .systemFont(ofSize: 20)
+        return button
+    }()
+    
+    private lazy var postsCollection: UICollectionView = {
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.itemSize = CGSize(width: 106, height: 106)
+        layout.scrollDirection = .vertical
+        layout.minimumInteritemSpacing = 5
+        layout.minimumLineSpacing = 15
+        let collectionview = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        collectionview.showsHorizontalScrollIndicator = false
+        collectionview.dataSource = self
+        collectionview.delegate = self
+        collectionview.register(ProfilePostsCell.self, forCellWithReuseIdentifier: ProfilePostsCell.identifier)
+        collectionview.showsVerticalScrollIndicator = false
+        collectionview.backgroundColor = .clear
+        return collectionview
+    }()
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .yellow
@@ -111,6 +150,9 @@ final class ProfileController: ViewController<ProfileInteracting, UIView> {
         horizontalStack.addArrangedSubview(followersLabel)
         horizontalStack.addArrangedSubview(secondLineView)
         horizontalStack.addArrangedSubview(followingLabel)
+        view.addSubview(followButton)
+        view.addSubview(messageButton)
+        view.addSubview(postsCollection)
     }
     
     override func setupConstraints() {
@@ -139,6 +181,27 @@ final class ProfileController: ViewController<ProfileInteracting, UIView> {
             $0.leading.trailing.equalToSuperview().inset(Space.base00.rawValue)
             $0.height.equalTo(70)
         }
+        
+        followButton.snp.makeConstraints {
+            $0.top.equalTo(horizontalStack.snp.bottom).offset(Space.base03.rawValue)
+            $0.leading.equalToSuperview().offset(Space.base11.rawValue)
+            $0.height.equalTo(30)
+            $0.width.equalTo(140)
+        }
+        
+        messageButton.snp.makeConstraints {
+            $0.top.equalTo(horizontalStack.snp.bottom).offset(Space.base03.rawValue)
+           // $0.leading.equalTo(followButton.snp.trailing).offset(Space.base10.rawValue)
+            $0.trailing.equalToSuperview().offset(-Space.base11.rawValue)
+            $0.height.equalTo(30)
+            $0.width.equalTo(140)
+        }
+        
+        postsCollection.snp.makeConstraints {
+            $0.top.equalTo(messageButton.snp.bottom).offset(Space.base08.rawValue)
+            $0.leading.trailing.equalToSuperview().inset(Space.base08.rawValue)
+            $0.bottom.equalToSuperview()
+        }
     }
     
     private func setupLabel(label: UILabel) {
@@ -160,3 +223,16 @@ extension ProfileController: ProfileDisplaying {
         //
     }
 }
+
+extension ProfileController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 12
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfilePostsCell.identifier, for: indexPath) as? ProfilePostsCell else { return UICollectionViewCell()}
+        return cell
+    }
+    
+}
+
