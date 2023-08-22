@@ -1,7 +1,7 @@
 import Foundation
 
 protocol ProfilePresenting: AnyObject {
-    func displayScreen()
+    func displayScreen(user: UserDataViewModel, posts: [PostViewModel])
 }
 
 final class ProfilePresenter: ProfilePresenting {
@@ -12,8 +12,8 @@ final class ProfilePresenter: ProfilePresenting {
         self.coordinator = coordinator
     }
     
-    func displayScreen() {
-        viewController?.doSomething()
+    func displayScreen(user: UserDataViewModel, posts: [PostViewModel]) {
+        viewController?.dataLoaded(user: user, posts: posts)
     }
     
     func performAction() {

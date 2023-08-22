@@ -30,8 +30,13 @@ class ProfilePostsCell: UICollectionViewCell {
         postImage.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.bottom.equalToSuperview()
-            $0.height.equalTo(100)
-            $0.width.equalTo(100)
+            $0.height.equalTo(106)
+            $0.width.equalTo(106)
         }
+    }
+    
+    func setupCell(post: PostViewModel) {
+        postImage.kf.setImage(with: URL(string: post.imageURL))
+        print(post.text)
     }
 }

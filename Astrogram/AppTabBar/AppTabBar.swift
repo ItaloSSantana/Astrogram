@@ -12,7 +12,7 @@ class AppTabBar: UITabBarController {
         let homeController = HomeViewFactory.make(delegate: self)
         homeController.tabBarController?.navigationItem.title = "Home"
         
-        let profileController = ProfileFactory.make(delegate: self)
+        let profileController = ProfileFactory.make(delegate: self, isCurrentUser: true)
         profileController.tabBarController?.navigationItem.title = "Profile"
         
         let addPostController = AddPostFactory.make(delegate: self)

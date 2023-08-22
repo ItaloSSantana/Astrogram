@@ -1,7 +1,8 @@
 import UIKit
 
 protocol ProfileDisplaying: AnyObject {
-    func doSomething()
+    func dataLoaded(user: UserDataViewModel, posts: [PostViewModel])
+    
 }
 
 final class ProfileController: ViewController<ProfileInteracting, UIView> {
@@ -133,9 +134,12 @@ final class ProfileController: ViewController<ProfileInteracting, UIView> {
         collectionview.backgroundColor = .clear
         return collectionview
     }()
+    
+    private var postList: [PostViewModel] = []
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        interactor.loadData()
         view.backgroundColor = .yellow
     }
     
@@ -191,7 +195,6 @@ final class ProfileController: ViewController<ProfileInteracting, UIView> {
         
         messageButton.snp.makeConstraints {
             $0.top.equalTo(horizontalStack.snp.bottom).offset(Space.base03.rawValue)
-           // $0.leading.equalTo(followButton.snp.trailing).offset(Space.base10.rawValue)
             $0.trailing.equalToSuperview().offset(-Space.base11.rawValue)
             $0.height.equalTo(30)
             $0.width.equalTo(140)
@@ -219,18 +222,23 @@ final class ProfileController: ViewController<ProfileInteracting, UIView> {
 }
 
 extension ProfileController: ProfileDisplaying {
-    func doSomething() {
-        //
+    func dataLoaded(user: UserDataViewModel, posts: [PostViewModel]) {
+        userImage.kf.setImage(with: URL(string: user.image))
+        nameLabel.text = user.name
+        nickLabel.text = user.nick
+        postList = posts
+        postsCollection.reloadData()
     }
 }
 
 extension ProfileController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
+        return postList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfilePostsCell.identifier, for: indexPath) as? ProfilePostsCell else { return UICollectionViewCell()}
+        cell.setupCell(post: postList[indexPath.row])
         return cell
     }
     
