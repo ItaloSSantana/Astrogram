@@ -69,7 +69,8 @@ class AuthenticationViewModel: ObservableObject {
                             .setData(["name": user?.profile?.name,
                                       "nickName" : user?.profile?.givenName,
                                       "email": user?.profile?.email,
-                                      "profileImage": imageURL])
+                                      "profileImage": imageURL,
+                                      "id": uid])
                     }
                 }
         }

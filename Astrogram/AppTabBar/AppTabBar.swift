@@ -12,7 +12,7 @@ class AppTabBar: UITabBarController {
         let homeController = HomeViewFactory.make(delegate: self)
         homeController.tabBarController?.navigationItem.title = "Home"
         
-        let profileController = ProfileFactory.make(delegate: self, isCurrentUser: true)
+        let profileController = ProfileFactory.make(delegate: self, isCurrentUser: true, userData: nil)
         profileController.tabBarController?.navigationItem.title = "Profile"
         
         let addPostController = AddPostFactory.make(delegate: self)
@@ -87,6 +87,10 @@ extension AppTabBar: HomeDelegate {
 extension AppTabBar: SearchDelegate {
     func returnClicked() {
         navigationController?.popViewController(animated: true)
+    }
+    func userPressed(user: UserDataViewModel) {
+        let profileController = ProfileFactory.make(delegate: self, isCurrentUser: false, userData: user)
+        navigationController?.pushViewController(profileController, animated: true)
     }
 }
 

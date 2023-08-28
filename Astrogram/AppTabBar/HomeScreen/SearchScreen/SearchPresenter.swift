@@ -2,6 +2,7 @@ import Foundation
 
 protocol SearchPresenting: AnyObject {
     func displayScreen(users: [UserDataViewModel])
+    func userPressed(user: UserDataViewModel)
     func returnPressed()
 }
 
@@ -15,6 +16,10 @@ final class SearchPresenter: SearchPresenting {
     
     func displayScreen(users: [UserDataViewModel]) {
         viewController?.usersLoaded(users: users)
+    }
+    
+    func userPressed(user: UserDataViewModel) {
+        coordinator.userPressed(user: user)
     }
     
     func returnPressed() {

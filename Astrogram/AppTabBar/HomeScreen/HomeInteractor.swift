@@ -7,6 +7,7 @@ import FirebaseStorage
 protocol HomeInteracting: AnyObject {
     func loadData()
     func searchPressed()
+    func loadCurrentUserData()
 }
 
 final class HomeInteractor: HomeInteracting {
@@ -98,6 +99,18 @@ final class HomeInteractor: HomeInteracting {
                 })
         }
     }
+    
+    func loadCurrentUserData() {
+        db?.collection("users").document(userID).getDocument(completion: { (document, error) in
+            guard let safeData = document?.data(),
+                  let safeName = safeData["name"] as? String,
+                  let safeEmail = safeData["email"] as? String,
+                  let safeNick = safeData["nickName"] as? String,
+                  let safeID = safeData["id"] as? String,
+                  let safeUserImage = safeData["profileImage"] as? String else { return }
+            self.presenter.loadCurrentUserData(user: UserDataViewModel(name: safeName, nick: safeNick, email: safeEmail, image: safeUserImage, id: safeID))
+        })
+        }
     
     func searchPressed() {
         presenter.searchPressed()

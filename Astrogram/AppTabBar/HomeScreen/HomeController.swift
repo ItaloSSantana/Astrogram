@@ -2,6 +2,7 @@ import UIKit
 
 protocol HomeDisplaying: AnyObject {
     func displayPosts(posts: [PostViewModel])
+    func loadCurrentUserData(user: UserDataViewModel)
 }
 
 final class HomeController: ViewController<HomeInteracting, UIView> {
@@ -78,6 +79,12 @@ final class HomeController: ViewController<HomeInteracting, UIView> {
     }()
         
     private var postList: [PostViewModel] = []
+    var currentUser: UserDataViewModel?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        interactor.loadCurrentUserData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -146,6 +153,10 @@ extension HomeController: HomeDisplaying {
             postCard.setupView(post: post)
             verticalStack.addArrangedSubview(postCard)
         }
+    }
+    
+    func loadCurrentUserData(user: UserDataViewModel) {
+        currentUser = user
     }
 }
 

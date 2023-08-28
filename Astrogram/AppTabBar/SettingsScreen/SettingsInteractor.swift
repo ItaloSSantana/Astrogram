@@ -36,8 +36,9 @@ final class SettingsInteractor: SettingsInteracting {
                   let safeName = safeData["name"] as? String,
                   let safeNick = safeData["nickName"] as? String,
                   let safeEmail = safeData["email"] as? String,
+                  let safeID = safeData["id"] as? String,
                   let safeImage = safeData["profileImage"] as? String else {return}
-            self.presenter.loadUserData(data: UserDataViewModel(name: safeName, nick: safeNick, email: safeEmail, image: safeImage))
+            self.presenter.loadUserData(data: UserDataViewModel(name: safeName, nick: safeNick, email: safeEmail, image: safeImage, id: safeID))
         })
     }
     

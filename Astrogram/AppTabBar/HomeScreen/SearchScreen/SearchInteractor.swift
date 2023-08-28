@@ -8,6 +8,7 @@ protocol SearchInteracting: AnyObject {
     func loadData()
     func returnPressed()
     func searchPressed(text: String)
+    func userPressed(user: UserDataViewModel)
     func removeListener()
 }
 
@@ -36,8 +37,9 @@ final class SearchInteractor: SearchInteracting {
                 guard let safeName = document["name"] as? String,
                       let safeNick = document["nickName"] as? String,
                       let safePicture = document["profileImage"] as? String,
+                      let safeID = document["id"] as? String,
                       let safeEmail = document ["email"] as? String else { return }
-                self.userList.append(UserDataViewModel(name: safeName, nick: safeNick, email: safeEmail , image: safePicture))
+                self.userList.append(UserDataViewModel(name: safeName, nick: safeNick, email: safeEmail , image: safePicture, id: safeID))
             }
             self.presenter.displayScreen(users: self.userList)
         })
@@ -57,6 +59,10 @@ final class SearchInteractor: SearchInteracting {
     
     func returnPressed() {
         presenter.returnPressed()
+    }
+    
+    func userPressed(user: UserDataViewModel) {
+        presenter.userPressed(user: user)
     }
     
     func removeListener() {

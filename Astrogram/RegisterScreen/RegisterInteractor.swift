@@ -50,7 +50,8 @@ final class RegisterInteractor: RegisterInteracting {
                 .setData(["name": safeName,
                           "nickName": safeNick,
                           "email": safeEmail,
-                          "profileImage": imageURL])
+                          "profileImage": imageURL,
+                          "id": safeUID])
             self.presenter.displayScreen()
         })
     }

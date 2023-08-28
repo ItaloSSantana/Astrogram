@@ -142,4 +142,9 @@ extension SearchController: UITableViewDelegate, UITableViewDataSource {
         cell.setupCell(user: user)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let user = usersList[indexPath.row]
+        interactor.userPressed(user: user)
+    }
 }

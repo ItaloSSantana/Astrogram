@@ -19,7 +19,7 @@ final class ProfileInteractor: ProfileInteracting {
     private var postList: [PostViewModel] = []
     private var messageListener: ListenerRegistration?
     
-    init(presenter: ProfilePresenting, isCurrentUser: Bool) {
+    init(presenter: ProfilePresenting, isCurrentUser: Bool, userData: UserDataViewModel?) {
         self.presenter = presenter
         auth = Auth.auth()
         db = Firestore.firestore()
@@ -28,6 +28,10 @@ final class ProfileInteractor: ProfileInteracting {
         
         if isCurrentUser == true {
             if let id = auth?.currentUser?.uid {
+                userID = id
+            }
+        } else {
+            if let id = userData?.id {
                 userID = id
             }
         }
@@ -39,6 +43,7 @@ final class ProfileInteractor: ProfileInteracting {
                   let safeName = safeData["name"] as? String,
                   let safeEmail = safeData["email"] as? String,
                   let safeNick = safeData["nickName"] as? String,
+                  let safeID = safeData["id"] as? String,
                   let safeUserImage = safeData["profileImage"] as? String else { return }
             self.db?.collection("posts").getDocuments(completion: { (posts, error) in
                 guard let safePosts = posts?.documents else { return }
@@ -49,7 +54,7 @@ final class ProfileInteractor: ProfileInteracting {
                         self.postList.append(PostViewModel(text: safeText, imageURL: safeImage, userID: self.userID, userImage: safeUserImage))
                     }
                 }
-                self.presenter.displayScreen(user: UserDataViewModel(name: safeName, nick: safeNick, email: safeEmail, image: safeUserImage),
+                self.presenter.displayScreen(user: UserDataViewModel(name: safeName, nick: safeNick, email: safeEmail, image: safeUserImage, id: safeID),
                                              posts: self.postList)
             })
         })

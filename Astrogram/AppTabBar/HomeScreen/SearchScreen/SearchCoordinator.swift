@@ -2,11 +2,13 @@ import UIKit
 
 protocol SearchDelegate {
     func returnClicked()
+    func userPressed(user: UserDataViewModel)
 }
 
 protocol SearchCoordinating: AnyObject {
     var viewController: UIViewController? {get set}
     func returnPressed()
+    func userPressed(user: UserDataViewModel)
 }
 
 final class SearchCoordinator: SearchCoordinating {
@@ -19,5 +21,9 @@ final class SearchCoordinator: SearchCoordinating {
     
     func returnPressed() {
         delegate.returnClicked()
+    }
+    
+    func userPressed(user: UserDataViewModel) {
+        delegate.userPressed(user: user)
     }
 }
