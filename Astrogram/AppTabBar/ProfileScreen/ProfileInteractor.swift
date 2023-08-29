@@ -7,9 +7,13 @@ import FirebaseStorage
 protocol ProfileInteracting: AnyObject {
     func loadData()
     func continueFlow()
+    func validateCurrentUser()
+    func returnPressed()
 }
 
 final class ProfileInteractor: ProfileInteracting {
+
+    
     let presenter: ProfilePresenting
     
     private var auth: Auth?
@@ -18,6 +22,7 @@ final class ProfileInteractor: ProfileInteracting {
     private var storage: Storage?
     private var postList: [PostViewModel] = []
     private var messageListener: ListenerRegistration?
+    private var isCurrentUser: Bool = false
     
     init(presenter: ProfilePresenting, isCurrentUser: Bool, userData: UserDataViewModel?) {
         self.presenter = presenter
@@ -25,6 +30,7 @@ final class ProfileInteractor: ProfileInteracting {
         db = Firestore.firestore()
         storage = Storage.storage()
         
+        self.isCurrentUser = isCurrentUser
         
         if isCurrentUser == true {
             if let id = auth?.currentUser?.uid {
@@ -60,6 +66,18 @@ final class ProfileInteractor: ProfileInteracting {
         })
     }
     
+    func validateCurrentUser() {
+        if isCurrentUser {
+            presenter.validateUser(validate: true)
+        } else {
+            presenter.validateUser(validate: false)
+        }
+    }
+    
+    func returnPressed() {
+        presenter.returnPressed()
+    }
+
     func continueFlow() {
         // :- NEXT PR
     }

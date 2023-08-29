@@ -2,6 +2,8 @@ import Foundation
 
 protocol ProfilePresenting: AnyObject {
     func displayScreen(user: UserDataViewModel, posts: [PostViewModel])
+    func validateUser(validate: Bool)
+    func returnPressed()
 }
 
 final class ProfilePresenter: ProfilePresenting {
@@ -16,7 +18,11 @@ final class ProfilePresenter: ProfilePresenting {
         viewController?.dataLoaded(user: user, posts: posts)
     }
     
-    func performAction() {
-        // :- NEXT PR
+    func validateUser(validate: Bool) {
+        viewController?.validateUser(validate: validate)
+    }
+    
+    func returnPressed() {
+        coordinator.returnPressed()
     }
 }

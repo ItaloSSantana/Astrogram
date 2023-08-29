@@ -1,12 +1,12 @@
 import UIKit
 
 protocol ProfileDelegate {
-    func continueFlow()
+    func returnPressed()
 }
 
 protocol ProfileCoordinating: AnyObject {
     var viewController: UIViewController? {get set}
-    func continueFlow()
+    func returnPressed()
 }
 
 final class ProfileCoordinator: ProfileCoordinating {
@@ -17,7 +17,7 @@ final class ProfileCoordinator: ProfileCoordinating {
         self.delegate = delegate
     }
     
-    func continueFlow() {
-        // :- NEXT PR
+    func returnPressed() {
+        delegate.returnPressed()
     }
 }

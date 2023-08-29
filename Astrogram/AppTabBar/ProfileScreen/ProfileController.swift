@@ -2,7 +2,7 @@ import UIKit
 
 protocol ProfileDisplaying: AnyObject {
     func dataLoaded(user: UserDataViewModel, posts: [PostViewModel])
-    
+    func validateUser(validate: Bool)
 }
 
 final class ProfileController: ViewController<ProfileInteracting, UIView> {
@@ -135,16 +135,30 @@ final class ProfileController: ViewController<ProfileInteracting, UIView> {
         return collectionview
     }()
     
+    private lazy var returnButton: CDefaultButton = {
+        let button = CDefaultButton(image: Constants.Images.backIcon,
+                                    radius: 23,
+                                    color: Constants.Colors.darkColor,
+                                    shadow: Constants.Colors.darkColor)
+        button.action = {
+            self.returnPressed()
+        }
+        return button
+    }()
+    
     private var postList: [PostViewModel] = []
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        interactor.validateCurrentUser()
         interactor.loadData()
         view.backgroundColor = .yellow
+        
     }
     
     override func buildViewHierarchy() {
         view.addSubview(backgroundImage)
+        view.addSubview(returnButton)
         view.addSubview(nameLabel)
         view.addSubview(userImage)
         view.addSubview(nickLabel)
@@ -162,6 +176,12 @@ final class ProfileController: ViewController<ProfileInteracting, UIView> {
     override func setupConstraints() {
         backgroundImage.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        
+        returnButton.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(Space.base06.rawValue)
+            $0.leading.equalToSuperview().offset(Space.base04.rawValue)
+            $0.width.height.equalTo(45)
         }
         
         nameLabel.snp.makeConstraints {
@@ -207,6 +227,11 @@ final class ProfileController: ViewController<ProfileInteracting, UIView> {
         }
     }
     
+    
+    @objc private func returnPressed() {
+        interactor.returnPressed()
+    }
+    
     private func setupLabel(label: UILabel) {
         label.text = "Seguidores \n 150000"
         label.font = .systemFont(ofSize: 18)
@@ -229,6 +254,14 @@ extension ProfileController: ProfileDisplaying {
         postList = posts
         postsCollection.reloadData()
     }
+    
+    func validateUser(validate: Bool) {
+        if validate {
+            returnButton.isHidden = true
+        } else {
+            returnButton.isHidden = false
+        }
+    }
 }
 
 extension ProfileController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -241,6 +274,5 @@ extension ProfileController: UICollectionViewDelegate, UICollectionViewDataSourc
         cell.setupCell(post: postList[indexPath.row])
         return cell
     }
-    
 }
 
