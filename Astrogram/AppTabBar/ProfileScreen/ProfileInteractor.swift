@@ -9,6 +9,8 @@ protocol ProfileInteracting: AnyObject {
     func continueFlow()
     func validateCurrentUser()
     func returnPressed()
+    func addFollowUser()
+    func validateFollower()
 }
 
 final class ProfileInteractor: ProfileInteracting {
@@ -64,6 +66,47 @@ final class ProfileInteractor: ProfileInteracting {
                                              posts: self.postList)
             })
         })
+    }
+    
+    func addFollowUser() {
+        guard let currentID = auth?.currentUser?.uid else {return}
+        db?.collection("followers").document(currentID).collection("follows").document(userID).getDocument(completion: { (snapshot, error) in
+            if let safeSnap = snapshot?.data() {
+                self.db?.collection("following")
+                    .document(self.userID)
+                    .collection("isFollowed")
+                    .document(currentID)
+                    .delete()
+                self.db?.collection("followers")
+                    .document(currentID)
+                    .collection("follows")
+                    .document(self.userID)
+                    .delete()
+            } else {
+                self.db?.collection("following")
+                    .document(self.userID)
+                    .collection("isFollowed")
+                    .document(currentID)
+                    .setData(["id":currentID])
+                self.db?.collection("followers")
+                    .document(currentID)
+                    .collection("follows")
+                    .document(self.userID)
+                    .setData(["id":self.userID])
+            }
+        })
+    }
+    
+    func validateFollower() {
+        guard let currentID = auth?.currentUser?.uid else {return}
+        db?.collection("followers").document(currentID).collection("follows").document(userID).addSnapshotListener({ (snapshot, error) in
+            if let safeSnap = snapshot?.data() {
+                print("existe")
+            }
+        })
+    }
+    func validateFollowing() {
+        
     }
     
     func validateCurrentUser() {

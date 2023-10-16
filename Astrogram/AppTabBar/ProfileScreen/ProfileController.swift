@@ -104,6 +104,7 @@ final class ProfileController: ViewController<ProfileInteracting, UIView> {
         button.setTitle("Seguir", for: .normal)
         button.titleLabel?.tintColor = .white
         button.titleLabel?.font = .systemFont(ofSize: 20)
+        button.addTarget(self, action: #selector(addFollowUser), for: .touchUpInside)
         return button
     }()
     
@@ -152,6 +153,7 @@ final class ProfileController: ViewController<ProfileInteracting, UIView> {
         super.viewDidLoad()
         interactor.validateCurrentUser()
         interactor.loadData()
+        interactor.validateFollower()
         view.backgroundColor = .yellow
         
     }
@@ -230,6 +232,10 @@ final class ProfileController: ViewController<ProfileInteracting, UIView> {
     
     @objc private func returnPressed() {
         interactor.returnPressed()
+    }
+    
+    @objc private func addFollowUser() {
+        interactor.addFollowUser()
     }
     
     private func setupLabel(label: UILabel) {
