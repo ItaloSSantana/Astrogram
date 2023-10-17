@@ -157,7 +157,7 @@ final class ProfileController: ViewController<ProfileInteracting, UIView> {
         interactor.validateCurrentUser()
         interactor.loadData()
         interactor.validatePosts()
-        interactor.validateFollower()
+        //interactor.validateFollower()
         interactor.validateFollowing()
         view.backgroundColor = .yellow
         

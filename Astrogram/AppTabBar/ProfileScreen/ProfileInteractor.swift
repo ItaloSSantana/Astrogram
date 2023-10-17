@@ -37,6 +37,10 @@ final class ProfileInteractor: ProfileInteracting {
         
         self.isCurrentUser = isCurrentUser
         
+        if let currentID = auth?.currentUser?.uid {
+            self.currentID = currentID
+        }
+        
         if isCurrentUser == true {
             if let id = auth?.currentUser?.uid {
                 userID = id
@@ -44,9 +48,6 @@ final class ProfileInteractor: ProfileInteracting {
         } else {
             if let id = userData?.id {
                 userID = id
-                if let currentID = auth?.currentUser?.uid {
-                    self.currentID = currentID
-                }
             }
         }
     }
@@ -89,23 +90,23 @@ final class ProfileInteractor: ProfileInteracting {
     }
     
     func validateFollower() {
-        let followsDB = db?.collection("followers").document(self.currentID).collection("follows").document(self.userID)
-        followsDB?.addSnapshotListener({ (snapshot, error) in
-            guard let safeSnap = snapshot?.data() else { return }
-            print(safeSnap.count)
-            self.presenter.validadeFollowerCount(validate: safeSnap.count)
-        })
-    
+        if let followsDB = db?.collection("followers").document(self.currentID).collection("follows").document(self.userID) {
+            followsDB.getDocument(completion: { (snapshot, error) in
+                guard error == nil else { return }
+                guard let safeSnap = snapshot?.data() else { return }
+                self.presenter.validadeFollowerCount(validate: safeSnap.count)
+            })
+        }
         
     }
     func validateFollowing() {
-        let followedDB = db?.collection("following").document(self.userID).collection("isFollowed").document(self.currentID)
-        followedDB?.addSnapshotListener({ (snapshot, error) in
-            guard let safeSnap = snapshot?.data() else { return }
-            print(safeSnap.count)
-            self.presenter.validadeFollowingCount(validate: safeSnap.count)
-        })
-        
+        if let followedDB = db?.collection("following").document(self.userID).collection("isFollowed").document(self.currentID) {
+            followedDB.getDocument(completion: { (snapshot, error) in
+                guard error == nil else { return }
+                guard let safeSnap = snapshot?.data() else { return }
+                self.presenter.validadeFollowingCount(validate: safeSnap.count)
+            })
+        }
     }
     
     func validatePosts() {
@@ -115,7 +116,6 @@ final class ProfileInteractor: ProfileInteracting {
             posts.forEach { (post) in
                 if post["userID"] as? String == self.userID {
                     postsCount += 1
-                    print(postsCount)
                 }
             }
             self.presenter.validatePostCount(validate: postsCount)
