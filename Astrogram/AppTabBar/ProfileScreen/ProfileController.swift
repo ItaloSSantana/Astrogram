@@ -3,6 +3,9 @@ import UIKit
 protocol ProfileDisplaying: AnyObject {
     func dataLoaded(user: UserDataViewModel, posts: [PostViewModel])
     func validateUser(validate: Bool)
+    func validateFollowerCount(validate: Int)
+    func validadeFollowingCount(validate: Int)
+    func validatePostCount(validate: Int)
 }
 
 final class ProfileController: ViewController<ProfileInteracting, UIView> {
@@ -153,7 +156,9 @@ final class ProfileController: ViewController<ProfileInteracting, UIView> {
         super.viewDidLoad()
         interactor.validateCurrentUser()
         interactor.loadData()
+        interactor.validatePosts()
         interactor.validateFollower()
+        interactor.validateFollowing()
         view.backgroundColor = .yellow
         
     }
@@ -239,7 +244,7 @@ final class ProfileController: ViewController<ProfileInteracting, UIView> {
     }
     
     private func setupLabel(label: UILabel) {
-        label.text = "Seguidores \n 150000"
+        label.text = "Seguidores \n 0"
         label.font = .systemFont(ofSize: 18)
         label.textColor = .white
         label.textAlignment = .center
@@ -253,6 +258,18 @@ final class ProfileController: ViewController<ProfileInteracting, UIView> {
 }
 
 extension ProfileController: ProfileDisplaying {
+    func validatePostCount(validate: Int) {
+        postsLabel.text = "Postagens \n \(validate)"
+    }
+    
+    func validateFollowerCount(validate: Int) {
+        followersLabel.text = "Seguindo \n \(validate)"
+    }
+    
+    func validadeFollowingCount(validate: Int) {
+        followingLabel.text = "Seguidores \n \(validate)"
+    }
+
     func dataLoaded(user: UserDataViewModel, posts: [PostViewModel]) {
         userImage.kf.setImage(with: URL(string: user.image))
         nameLabel.text = user.name

@@ -11,6 +11,8 @@ protocol ProfileInteracting: AnyObject {
     func returnPressed()
     func addFollowUser()
     func validateFollower()
+    func validateFollowing()
+    func validatePosts()
 }
 
 final class ProfileInteractor: ProfileInteracting {
@@ -20,6 +22,7 @@ final class ProfileInteractor: ProfileInteracting {
     
     private var auth: Auth?
     private var userID = ""
+    private var currentID = ""
     private var db: Firestore?
     private var storage: Storage?
     private var postList: [PostViewModel] = []
@@ -41,6 +44,9 @@ final class ProfileInteractor: ProfileInteracting {
         } else {
             if let id = userData?.id {
                 userID = id
+                if let currentID = auth?.currentUser?.uid {
+                    self.currentID = currentID
+                }
             }
         }
     }
@@ -69,44 +75,51 @@ final class ProfileInteractor: ProfileInteracting {
     }
     
     func addFollowUser() {
-        guard let currentID = auth?.currentUser?.uid else {return}
-        db?.collection("followers").document(currentID).collection("follows").document(userID).getDocument(completion: { (snapshot, error) in
+        let followedDB = db?.collection("following").document(self.userID).collection("isFollowed").document(self.currentID)
+        let followsDB = db?.collection("followers").document(self.currentID).collection("follows").document(self.userID)
+        followsDB?.getDocument(completion: { (snapshot, error) in
             if let safeSnap = snapshot?.data() {
-                self.db?.collection("following")
-                    .document(self.userID)
-                    .collection("isFollowed")
-                    .document(currentID)
-                    .delete()
-                self.db?.collection("followers")
-                    .document(currentID)
-                    .collection("follows")
-                    .document(self.userID)
-                    .delete()
+                followedDB?.delete()
+                followsDB?.delete()
             } else {
-                self.db?.collection("following")
-                    .document(self.userID)
-                    .collection("isFollowed")
-                    .document(currentID)
-                    .setData(["id":currentID])
-                self.db?.collection("followers")
-                    .document(currentID)
-                    .collection("follows")
-                    .document(self.userID)
-                    .setData(["id":self.userID])
+                followedDB?.setData(["id":self.currentID])
+                followsDB?.setData(["id":self.userID])
             }
         })
     }
     
     func validateFollower() {
-        guard let currentID = auth?.currentUser?.uid else {return}
-        db?.collection("followers").document(currentID).collection("follows").document(userID).addSnapshotListener({ (snapshot, error) in
-            if let safeSnap = snapshot?.data() {
-                print("existe")
-            }
+        let followsDB = db?.collection("followers").document(self.currentID).collection("follows").document(self.userID)
+        followsDB?.addSnapshotListener({ (snapshot, error) in
+            guard let safeSnap = snapshot?.data() else { return }
+            print(safeSnap.count)
+            self.presenter.validadeFollowerCount(validate: safeSnap.count)
         })
+    
+        
     }
     func validateFollowing() {
+        let followedDB = db?.collection("following").document(self.userID).collection("isFollowed").document(self.currentID)
+        followedDB?.addSnapshotListener({ (snapshot, error) in
+            guard let safeSnap = snapshot?.data() else { return }
+            print(safeSnap.count)
+            self.presenter.validadeFollowingCount(validate: safeSnap.count)
+        })
         
+    }
+    
+    func validatePosts() {
+        var postsCount = 0
+        db?.collection("posts").getDocuments(completion: { (snapshot, error) in
+            guard let posts = snapshot?.documents else { return }
+            posts.forEach { (post) in
+                if post["userID"] as? String == self.userID {
+                    postsCount += 1
+                    print(postsCount)
+                }
+            }
+            self.presenter.validatePostCount(validate: postsCount)
+        })
     }
     
     func validateCurrentUser() {
