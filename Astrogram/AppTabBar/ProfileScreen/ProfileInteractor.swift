@@ -66,7 +66,7 @@ final class ProfileInteractor: ProfileInteracting {
                     if post["userID"] as? String == self.userID {
                         guard let safeImage = post["imageURL"] as? String,
                               let safeText = post["text"] as? String else { return }
-                        self.postList.append(PostViewModel(text: safeText, imageURL: safeImage, userID: self.userID, userImage: safeUserImage))
+                        self.postList.append(PostViewModel(text: safeText, imageURL: safeImage, userID: self.userID, userImage: safeUserImage, name: safeName))
                     }
                 }
                 self.presenter.displayScreen(user: UserDataViewModel(name: safeName, nick: safeNick, email: safeEmail, image: safeUserImage, id: safeID),

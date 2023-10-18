@@ -43,7 +43,7 @@ final class HomeInteractor: HomeInteracting {
                     guard let safeText = data["text"] as? String,
                           let safeImage = data["imageURL"] as? String,
                           let safeID = data["userID"] as? String else {return}
-                    self.posts.append(PostViewModel(text: safeText, imageURL: safeImage, userID: safeID, userImage: ""))
+                    self.posts.append(PostViewModel(text: safeText, imageURL: safeImage, userID: safeID, userImage: "", name: ""))
                 }
                 self.loadFollowingData { (result) in
                     if result {
@@ -56,7 +56,7 @@ final class HomeInteractor: HomeInteracting {
     private func loadFollowingData(completionHandler:@escaping (Bool) -> ()) {
         var control = 0
         posts.forEach { (post) in
-            db?.collection("following")
+            db?.collection("followers")
                 .document(userID)
                 .collection("follows")
                 .document(post.userID)
@@ -88,8 +88,9 @@ final class HomeInteractor: HomeInteracting {
                         print(err.localizedDescription)
                     }
                     if let safeDoc = document?.data() {
-                        guard let safeImage = safeDoc["profileImage"] as? String else {return}
-                        self.showPosts.append(PostViewModel(text: post.text, imageURL: post.imageURL, userID: post.userID, userImage: safeImage))
+                        guard let safeImage = safeDoc["profileImage"] as? String,
+                              let safeName = safeDoc["name"] as? String else {return}
+                        self.showPosts.append(PostViewModel(text: post.text, imageURL: post.imageURL, userID: post.userID, userImage: safeImage, name: safeName))
                     }
                     control += 1
                     if control == self.followingPosts.count - 1 {

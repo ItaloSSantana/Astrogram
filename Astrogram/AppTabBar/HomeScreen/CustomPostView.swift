@@ -134,13 +134,13 @@ class CustomPostView: UIView {
             $0.centerY.equalTo(commentButton)
             $0.trailing.equalToSuperview().offset(-Space.base05.rawValue)
         }
-    }
+    }	
     
     func setupView(post: PostViewModel) {
         postImage.kf.setImage(with: URL(string: post.imageURL))
         textLabel.text = post.text
         userImage.kf.setImage(with: URL(string: post.userImage))
+        userNameLabel.text = post.name
         print(post.text)
     }
-    
 }

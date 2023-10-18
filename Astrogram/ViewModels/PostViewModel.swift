@@ -5,4 +5,5 @@ struct PostViewModel: Codable {
     let imageURL: String
     let userID: String
     let userImage: String
+    let name: String?
 }
